@@ -1,0 +1,44 @@
+﻿@model AccountProfileViewModel
+
+<div class="profile-main">
+    <h2 class="user-name">@User.Identity.Name</h2>
+    <h2 class="orders-title">Ваши заказы</h2>
+    <table class="orders__table">
+        <thead>
+            <th class="col-id">ID</th>
+            <th class="col-status">Статус</th>
+            <th class="col-details-products">Детали</th>
+            <th class="col-details-quantity"></th>
+        </thead>
+        @foreach(var order in Model.Orders)
+        {
+            <tbody>
+            <tr class="col-title">
+                <td class="col-id">@order.Id</td>
+                @if(order.IsShipped)
+                {
+                    <td class="col-status" data-status="did-shiped">Выслано</td>
+                }
+                else
+                {
+                    <td class="col-status" data-status="did-not-shiped">Не выслано</td>
+                }
+                <th class="col-product">Товар</th>
+                <th class="col-quantity">Количество</th>
+            </tr>
+            @foreach(var cartItem in order.CartItems)
+            {
+                <tr>
+                    <td colspan="2"></td>
+                    <td class="col-product">@cartItem.Product.GetTitle()</td>
+                    <td class="col-quantity">@cartItem.Quantity</td>
+                </tr>
+            }
+        </tbody>
+        }
+    </table>
+    <div class="buttons-container">
+        <a class="change-password-button" asp-action="ChangePassword">Изменить пароль</a>
+        <a class="log-out-button" asp-controller="Account" asp-action="LogOut" asp-route-returnUrl="@Model.ReturnUrl">Выйти</a>
+    </div>
+</div>

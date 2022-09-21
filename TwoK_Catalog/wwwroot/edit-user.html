@@ -1,0 +1,53 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles_admins_pages.css">
+        <link rel="stylesheet" href="css/styles_edit_user.css">
+        <title>2k.by</title>
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <header class="admin-header">
+                <h1>Редактирование товара</h1>
+            </header>
+
+            <main class="admin-main">
+                <div class="admin-main__edit-user">
+                    <form action="SaveUser" method="post">
+                        <div class="form-item">
+                            <label>
+                                Логин:
+                                <input type="text" placeholder="Логин:" value="serGAY">
+                            </label>
+                        </div>
+                        <div class="form-item">
+                            <label>
+                                Email:
+                                <input type="text" placeholder="Email:" value="serGAY@gmail.com" disabled>
+                            </label>
+                        </div>
+                        <div class="form-item">
+                            <label class="triangle-for-select select-container">
+                                Права доступа:
+                                <select class="select">
+                                    <option value="phone">Обычный пользователь</option>
+                                    <option value="laptop">Младший админ</option>
+                                    <option value="laptop">Старший админ</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="save-button" type="submit">Сохранить</button>
+                            <a class="cancel-button">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </main>
+            
+            <script src="js/custom-select.js"></script>
+            <script src="js/custom-input-file.js"></script>
+    </body>
+</html>

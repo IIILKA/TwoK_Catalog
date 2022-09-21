@@ -1,0 +1,112 @@
+﻿@inject SessionRegisterViewModel registerViewModel
+@inject SessionLogInViewModel logInViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" asp-href-include="~/css/*.css" asp-append-version="true"/>
+    <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>2k.by</title>
+    <style>
+        body {
+            height: 1px;
+            min-height: 100vh;
+
+        }
+        main {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="wrapper">
+        @await Html.PartialAsync("Header")
+
+        <main class="main">
+            @RenderBody()
+        </main>
+
+        <footer class="footer">
+                <div class="container">
+                    <div class="footer__flex">
+                        <div class="footer__row head">
+                            <div class="footer__lists">
+                                <div class="footer__column footer__column_1">
+                                    <div class="footer__title">Информация</div>
+                                    <ul class="footer__list">
+                                        <li><a href="">Покупателям</a></li>
+                                        <li><a href="">Продавцам</a></li>
+                                        <li><a href="">Карта сайта</a></li>
+                                        <li><a href="">Производители</a></li>
+                                        <li><a href="">Регистрация магазина</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer__column">
+                                    <div class="footer__title">Популярные категории</div>
+                                    <ul class="footer__list">
+                                        <li><a href="">Ноутбуки</a></li>
+                                        <li><a href="">Вертикальные пылесосы</a></li>
+                                        <li><a href="">Водонагреватели</a></li>
+                                        <li><a href="">Велосипеды</a></li>
+                                        <li><a href="">Самокаты</a></li>
+                                    </ul>
+                                </div>
+                                <div class="footer__column footer__column_3">
+                                    <div class="footer__title">Новые категории</div>
+                                    <ul class="footer__list">
+                                        <li><a href="">Пьедесталы для умывальников</a></li>
+                                        <li><a href="">Садовая мебель</a></li>
+                                        <li><a href="">Игрушечные машинки и техника</a></li>
+                                        <li><a href="">Термопринтеры</a></li>
+                                        <li><a href="">Кофе</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="footer__buttons buttons">
+                                <div class="buttons__column">
+                                    <div class="buttons__row">
+                                        <a href="" class="vk">VK</a>
+                                        <a href="" class="twitter">twitter</a>
+                                        <a href="" class="mobile-version">Мобильная версия</a>
+                                    </div>
+                                    <div class="buttons__text">© 2007-2022 "Первый Каталог" Беларусь, Минск</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__row bottom">
+                            <ul class="bottom__list">
+                                <li><a href="">О нас</a></li>
+                                <li><a href="">Реклама</a></li>
+                                <li><a href="">Пользовательское соглашение</a></li>
+                                <li><a href="">Копирайт и авторские права </a></li>
+                                <li><a href="">Обратная связь</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        @if(logInViewModel.IsFailed && registerViewModel.IsFailed)
+        {
+            if(logInViewModel.LastActivity > registerViewModel.LastActivity)
+            {
+                registerViewModel.IsFailed = false;
+            }
+            else 
+            {
+                logInViewModel.IsFailed = false;
+            }
+        }
+        @await Html.PartialAsync("LogInPopup", logInViewModel)
+        @await Html.PartialAsync("RegisterPopup", registerViewModel)
+    </div>
+
+    <environment names="Development">
+        <script asp-src-include="~/js/*.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script asp-src-include="~/js/*.js"></script>
+    </environment>
+</body>
+</html>

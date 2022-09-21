@@ -1,0 +1,48 @@
+﻿@model Order
+
+<h1 class="main__title">Заполните форму</h1>
+<div asp-validation-summary="All" class="text-danger"></div>
+<form asp-action="ToOrder" method="post" class="order-form">
+    <div class="input-container">
+        <label class="input-title">
+        Имя
+        <input type="text" asp-for="Name">
+        <label>
+    </div>
+    <div class="input-container">
+        <label class="input-title">
+        Почтовый индекс
+        <input type="text" asp-for="PostCode">
+        <label>
+    </div>
+    <div class="input-container">
+        <label class="input-title">
+        Адрес
+        <input type="text" asp-for="Address">
+        <label>
+    </div>
+    <div class="input-container">
+        <label class="input-title">
+        Город
+        <input type="text" asp-for="City">
+        <label>
+    </div>
+    <div class="input-container">
+        <label class="input-title">
+        Страна
+        <input type="text" asp-for="Country">
+        <label>
+    </div>
+    <div class="input-container">
+        <label class="input-title select-container triangle-for-select">
+        Цвет
+        <select class="select" name="color" asp-for="Color">
+            <option value="white">Белый</option>
+            <option value="black">Чёрный</option>
+        </select>
+        <label>
+    </div>
+    <div class="btn-container">
+        <button type="submit" class="btn">Подтвердить заказ</button>
+    </div>
+</form>

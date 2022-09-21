@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Order>
+    
+@{
+    ViewBag.Title = "Заказы";
+    Layout = "_AdminLayout";
+}
+
+<div class="main__orders-container">
+@if (Model.Count() > 0)
+{
+    <table class="orders__table">
+        <thead>
+            <th class="col-name">Имя</th>
+            <th class="col-postcode">Почтовый индекс</th>
+            <th colspan="2" class="col-details">Детали</th>
+        </thead>
+        @foreach (var order in Model)
+        {
+                <tbody>
+                    <tr class="col-title">
+                        <td class="col-name">@order.Name</td>
+                        <td>@order.PostCode</td>
+                        <th>Товар</th>
+                        <th class="col-quantity">Количество</th>
+                        <td class="col-shipped-button">
+                            <form asp-action="MarkShipped" method="post">
+                                <input type="hidden" name="orderId" value="@order.Id"/>
+                                <button type="submit" class="shipped-button">Отправлено</button>
+                            </form>
+                        </td>
+                    </tr>
+                @foreach (var cartItem in order.CartItems)
+                {
+                            <tr>
+                                <td colspan="2"></td>
+                                <td>@cartItem.Product.GetTitle()</td>
+                                <td class="col-quantity">@cartItem.Quantity</td>
+                                <td class="col-space"></td>
+                            </tr>
+                }
+                </tbody>
+        }
+    </table>
+}
+else
+{
+    <div class="no-orders-message">Закзаов нет!</div>
+}
+</div>
+<div class="return-link-container">
+    <a asp-controller="Home" asp-action="Index" class="to-HomeIndex-button">На главную</a>
+</div>

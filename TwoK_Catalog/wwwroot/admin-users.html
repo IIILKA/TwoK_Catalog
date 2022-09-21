@@ -1,0 +1,83 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles_admins_pages.css">
+        <link rel="stylesheet" href="css/styles_admin_users.css">
+        <title>2k.by</title>
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <header class="admin-header">
+                <h1>Список пользователей</h1>
+            </header>
+
+            <main class="admin-main">
+                <div class="admin-main__users">
+                    <form action="SortUsers" method="get">
+                        <div class="sort-form-items-container">
+                            <div class="sort-form-row">
+                                <div class="sort-form-item">
+                                    <label>
+                                        Логин:
+                                        <input type="text" name="username" placeholder="Логин:">
+                                    </label>
+                                </div>
+                                <div class="sort-form-item">
+                                    <label>
+                                        Email:
+                                        <input type="text" name="email" placeholder="Email:">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sort-form-row">
+                                <div class="sort-form-item">
+                                    <label class="triangle-for-select select-container" data-state="">
+                                        Права доступа:
+                                        <select class="select" data-state="">
+                                            <option value=""></option>
+                                            <option value="phone">Обычный пользователь</option>
+                                            <option value="laptop">Младший админ</option>
+                                            <option value="laptop">Старший админ</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sort-form-row">
+                                <div class="sort-button-container">
+                                    <button class="to-sort-button" type="submit">Фильтр</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="users__table">
+                        <thead>
+                            <th class="col-username">Логин</th>
+                            <th class="col-email">Email</th>
+                            <th class="col-category">Права доступа</th>
+                            <th class="col-actions">Действия</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-username">serGAY</td>
+                                <td class="col-email">serGAY@gmail.com</td>
+                                <td class="col-category">Обычный пользователь</td>
+                                <td class="col-actions">
+                                    <form action="Delete" method="post">
+                                        <a class="edit-button" href="#">Редактировать</a>
+                                        <button class="delete-button">Удалить</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="add-button-container">
+                        <a class="add-button">Добавить</a>
+                    </div>
+                </div>
+            </main>
+            <script src="js/custom-select.js"></script>
+    </body>
+</html>

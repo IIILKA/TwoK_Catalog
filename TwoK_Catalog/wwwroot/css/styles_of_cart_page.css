@@ -1,0 +1,107 @@
+.main__title {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.main__cart-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cart__table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.25rem;
+}
+.cart__table thead {
+  height: 2.5rem;
+}
+.cart__table thead .col-quantity {
+  width: 10%;
+}
+.cart__table thead .col-product {
+  width: 40%;
+}
+.cart__table thead .col-price {
+  width: 20%;
+}
+.cart__table thead .col-subtotal {
+  width: 20%;
+}
+.cart__table tbody tr {
+  height: 2.5rem;
+}
+.cart__table tbody tr:nth-child(odd) {
+  background-color: rgba(220, 230, 238, 0.3882352941);
+}
+.cart__table tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+.cart__table tfoot {
+  text-align: right;
+}
+.cart__table tfoot tr {
+  height: 2.5rem;
+}
+.cart__table .col-quantity {
+  text-align: center;
+}
+.cart__table .col-product {
+  text-align: left;
+}
+.cart__table .col-price {
+  text-align: right;
+}
+.cart__table .col-subtotal {
+  text-align: right;
+  padding-right: 1.25rem;
+}
+.cart__table .col-delete-button {
+  text-align: center;
+  background-color: white;
+}
+.cart__table .col-delete-button form {
+  margin: 0;
+}
+.cart__table .col-delete-button .delete-button {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #f90;
+  border-radius: 4px;
+  outline: none;
+  border: 2px solid #f90;
+  font-size: 0.875rem;
+  color: white;
+}
+.cart__table .col-delete-button .delete-button:hover {
+  border-color: rgb(179, 109, 5);
+}
+
+.return-link-container, .to-order-link-container {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+.return-link-container .return-link, .return-link-container .to-order-link, .to-order-link-container .return-link, .to-order-link-container .to-order-link {
+  padding: 0.5rem 0 0.75rem 0;
+  background-color: #09f;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #007ce2;
+}
+.return-link-container .return-link:hover, .return-link-container .to-order-link:hover, .to-order-link-container .return-link:hover, .to-order-link-container .to-order-link:hover {
+  background-color: #1ca4fe;
+}
+.return-link-container .return-link span, .return-link-container .to-order-link span, .to-order-link-container .return-link span, .to-order-link-container .to-order-link span {
+  font-size: 0.9375rem;
+  color: white;
+  margin: 0 0.5rem;
+}

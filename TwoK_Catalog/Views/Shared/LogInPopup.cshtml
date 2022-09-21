@@ -1,0 +1,48 @@
+﻿@model LogInViewModel
+
+@if (Model.IsFailed)
+{
+    ViewBag.PopupClass = @"popup open";
+}
+else
+{
+    ViewBag.PopupClass = @"popup";
+}
+
+<div id="popup__log-in" class="@ViewBag.PopupClass">
+    <div class="popup__body">
+        <div class="popup__content">
+            <a href="" class="popup__close close-popup"><i class="gg-close"></i></a>
+            <div class="popup__title">Авторизация</div>
+            @if(Model.ErrorMessages != null)
+            {
+                <div class="text-danger-container">
+                    <ul>
+                        @foreach (var error in Model.ErrorMessages)
+                        {
+                            <li class="text-danger">@error</li>
+                        }
+                    </ul>
+                </div>
+            }
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <form asp-controller="Account" asp-action="LogIn" class="popup__form" method="post">
+                <input type="hidden" asp-for="ReturnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                <label class="popup-text-field__label">
+                    <input asp-for="Email" class="popup-text-field__input" type="text" placeholder="Email">
+                </label>
+                <label class="popup-text-field__label">
+                    <input asp-for="Password" class="popup-text-field__input" type="password" placeholder="Пароль">
+                </label>
+                <div class="popup__details">
+                    <div class="checkbox--container">
+                        <input asp-for="RememberMe" id="rememberMe" type="checkbox" checked>
+                        <label for="#rememberMe">Запомнить меня</label>
+                    </div>
+                    <a href="#">Востановить пароль?</a>
+                </div>
+                <button class="popup__button" type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+</div>

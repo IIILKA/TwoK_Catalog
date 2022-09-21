@@ -1,0 +1,130 @@
+.admin-main .admin-main__edit-user {
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 0 1.25rem 2rem 1.25rem;
+
+    & .form-item {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: .75rem;
+
+        & label {
+            font-size: .875rem;
+            font-weight: 700;
+            color: #444;
+        }
+
+        & input {
+            display: block;
+            height: 2rem;
+            width: 100%;
+            padding: 0 1rem;
+            margin-top: .25rem;
+            outline: none;
+            background-color: white;
+            border: 2px solid #c5d5e2;
+            border-radius: 4px;
+
+            &.rich-text {
+                height: 15rem;
+                font-size: 1rem;
+                padding: .5rem 1rem;
+            }
+        }
+
+        .select-container{
+            position: relative;
+        
+            &::after{
+                content: "";
+                position: absolute;
+                top: 70%;
+                right: 16px;
+                transform: translateY(-50%);
+                display: block;
+            
+                pointer-events: none;
+        
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 8px 5px 0 5px;
+                border-color: #9badbb transparent transparent transparent;
+            }
+        
+            &[data-state="mouseOver"]::after{
+                border-color: rgba(8, 126, 243, 0.856) transparent transparent transparent;
+            }
+        
+            & select {
+                // Убираем стандартную стрелочку
+                margin-top: .25rem;
+                appearance: none;
+                outline: none;
+                font-size: .875rem;
+        
+                position: relative;
+                display: block;
+                width: 100%;
+                text-align: left;
+        
+                background-color: white;
+                border: 2px solid #c5d5e2;
+                border-radius: 4px;
+                height: 2rem;
+                padding: 0 1rem;
+        
+                cursor: pointer;
+        
+                &:hover{
+                    color: #06c;
+                }
+        
+                & option{
+                    font-size: .875rem;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    & .buttons-container {
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+
+        font-size: 1rem;
+
+        & .save-button {
+            width: auto;
+            height: auto;
+            padding: .75rem;
+
+            background-color: #09f;
+            border: 1px solid #007ce2;
+            border-radius: .25rem;
+            color: white;
+            font-weight: 600;
+
+            &:hover {
+                background-color: #1ca4fe;
+            }
+        }
+
+        & .cancel-button {
+            padding: .75rem;
+
+            background-color: #f56b6b;
+            border: 1px solid #f56b6b;
+            border-radius: .25rem;
+            color: white;
+            font-weight: 600;
+
+            &:hover {
+                background-color: #d63b3b;
+            }
+        }
+    }
+}

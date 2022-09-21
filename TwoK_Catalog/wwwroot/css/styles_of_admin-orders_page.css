@@ -1,0 +1,90 @@
+.main__orders-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.main__orders-container .orders__table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.25rem;
+}
+.main__orders-container .orders__table thead {
+  height: 2.5rem;
+  text-align: left;
+}
+.main__orders-container .orders__table thead .col-name {
+  width: 10%;
+  padding-left: 0.5rem;
+}
+.main__orders-container .orders__table thead .col-postcode {
+  width: 20%;
+}
+.main__orders-container .orders__table tbody {
+  text-align: left;
+}
+.main__orders-container .orders__table tbody tr {
+  height: 2.5rem;
+}
+.main__orders-container .orders__table tbody tr .col-name {
+  padding-left: 0.5rem;
+}
+.main__orders-container .orders__table tbody tr .col-quantity {
+  text-align: center;
+}
+.main__orders-container .orders__table tbody tr:nth-child(odd) {
+  background-color: rgba(220, 230, 238, 0.3882352941);
+}
+.main__orders-container .orders__table tbody tr:nth-child(odd) .col-space {
+  background-color: white;
+}
+.main__orders-container .orders__table tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+.main__orders-container .orders__table .col-shipped-button {
+  text-align: center;
+  background-color: white;
+}
+.main__orders-container .orders__table .col-shipped-button form {
+  margin: 0;
+}
+.main__orders-container .orders__table .col-shipped-button .shipped-button {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #f90;
+  border-radius: 4px;
+  outline: none;
+  border: 2px solid #f90;
+  font-size: 0.875rem;
+  color: white;
+}
+.main__orders-container .orders__table .col-shipped-button .shipped-button:hover {
+  border-color: rgb(179, 109, 5);
+}
+.main__orders-container .return-link-container {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+.main__orders-container .return-link-container .return-link {
+  padding: 0.5rem 0 0.75rem 0;
+  background-color: #09f;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #007ce2;
+}
+.main__orders-container .return-link-container .return-link:hover {
+  background-color: #1ca4fe;
+}
+.main__orders-container .return-link-container .return-link span {
+  font-size: 0.9375rem;
+  color: white;
+  margin: 0 0.5rem;
+}
+.main__orders-container .no-orders-message {
+  font-size: 3rem;
+  text-align: center;
+}

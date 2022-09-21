@@ -1,0 +1,124 @@
+.admin-main .admin-main__edit-user {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 1.25rem 2rem 1.25rem;
+}
+.admin-main .admin-main__edit-user .form-item {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+.admin-main .admin-main__edit-user .form-item label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #444;
+}
+.admin-main .admin-main__edit-user .form-item input {
+  display: block;
+  height: 2rem;
+  width: 100%;
+  padding: 0 1rem;
+  margin-top: 0.25rem;
+  outline: none;
+  background-color: white;
+  border: 2px solid #c5d5e2;
+  border-radius: 4px;
+}
+.admin-main .admin-main__edit-user .form-item input.rich-text {
+  height: 15rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+.admin-main .admin-main__edit-user .form-item .select-container {
+  position: relative;
+}
+.admin-main .admin-main__edit-user .form-item .select-container::after {
+  content: "";
+  position: absolute;
+  top: 70%;
+  right: 16px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: block;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: #9badbb transparent transparent transparent;
+}
+.admin-main .admin-main__edit-user .form-item .select-container[data-state=mouseOver]::after {
+  border-color: rgba(8, 126, 243, 0.856) transparent transparent transparent;
+}
+.admin-main .admin-main__edit-user .form-item .select-container select {
+  margin-top: 0.25rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  font-size: 0.875rem;
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  border: 2px solid #c5d5e2;
+  border-radius: 4px;
+  height: 2rem;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.admin-main .admin-main__edit-user .form-item .select-container select:hover {
+  color: #06c;
+}
+.admin-main .admin-main__edit-user .form-item .select-container select option {
+  font-size: 0.875rem;
+  color: black;
+}
+.admin-main .admin-main__edit-user .buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+.admin-main .admin-main__edit-user .buttons-container .save-button {
+  width: auto;
+  height: auto;
+  padding: 0.75rem;
+  background-color: #09f;
+  border: 1px solid #007ce2;
+  border-radius: 0.25rem;
+  color: white;
+  font-weight: 600;
+}
+.admin-main .admin-main__edit-user .buttons-container .save-button:hover {
+  background-color: #1ca4fe;
+}
+.admin-main .admin-main__edit-user .buttons-container .cancel-button {
+  padding: 0.75rem;
+  background-color: #f56b6b;
+  border: 1px solid #f56b6b;
+  border-radius: 0.25rem;
+  color: white;
+  font-weight: 600;
+}
+.admin-main .admin-main__edit-user .buttons-container .cancel-button:hover {
+  background-color: #d63b3b;
+}

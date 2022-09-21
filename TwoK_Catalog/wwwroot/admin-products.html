@@ -1,0 +1,98 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles_admins_pages.css">
+        <link rel="stylesheet" href="css/styles_of_admin-products.css">
+        <title>2k.by</title>
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <header class="admin-header">
+                <h1>Список товаров</h1>
+            </header>
+
+            <main class="admin-main">
+                <form action="SortProducts" method="get">
+                    <div class="sort-form-items-container">
+                        <div class="sort-form-row">
+                            <div class="sort-form-item">
+                                <label>
+                                    Наименование:
+                                    <input type="text" name="productName" placeholder="Наименование:">
+                                </label>
+                            </div>
+                            <div class="sort-form-item">
+                                <label>
+                                    Минимальная цена:
+                                    <input type="text" name="minPrice" placeholder="Минимальная цена:">
+                                </label>
+                            </div>
+                            <div class="sort-form-item">
+                                <label>
+                                    Максимальная цена:
+                                    <input type="text" name="maxPrice" placeholder="Максимальная цена:">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sort-form-row">
+                            <div class="sort-form-item">
+                                <label class="triangle-for-select select-container" data-state="">
+                                    Категория:
+                                    <select class="select" data-state="">
+                                        <option value=""></option>
+                                        <option value="phone">Телефон</option>
+                                        <option value="laptop">Ноутбук</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="sort-form-item">
+                                <label>
+                                    Количество:
+                                    <input type="text" name="ProductName" placeholder="Количество:">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sort-form-row">
+                            <div class="sort-button-container">
+                                <button class="to-sort-button" type="submit">Фильтр</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <table class="products__table">
+                    <thead>
+                        <th class="col-id">Id</th>
+                        <th class="col-img">Изображение</th>
+                        <th class="col-name">Наименование товара</th>
+                        <th class="col-price">Цена</th>
+                        <th class="col-category">Категория</th>
+                        <th class="col-quantity">Количество</th>
+                        <th class="col-actions">Действия</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-id">1</td>
+                            <td class="col-img"><div><img src="img/products/phones/apple/Apple_iPhone_13(1).png"></div></td>
+                            <td class="col-name">Apple iPhone 13 128GB</td>
+                            <td class="col-price">2 400.00 Br</td>
+                            <td class="col-category">Телефон</td>
+                            <td class="col-quantity">156</td>
+                            <td class="col-actions">
+                                <form action="Delete" method="post">
+                                    <a class="edit-button" href="#">Редактировать</a>
+                                    <button class="delete-button">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-button-container">
+                    <a class="add-button">Добавить</a>
+                </div>
+            </main>
+            <script src="js/custom-select.js"></script>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = Model.Id == 0 ? "Конструктор товара" : "Редактирование товара";
+    Layout = "_AdminLayout";
+}
+
+<form action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id">
+    <div class="form-item">
+        <label>
+            Наименование:
+            <div class="invalid-form-value"><span asp-validation-for="Name"></span></div>
+            <input asp-for="Name" type="text" placeholder="Наименование:">
+        </label>
+    </div>
+    <div class="form-item">
+        <label>
+            Компания-производитель:
+            <div class="invalid-form-value"><span asp-validation-for="Company"></span></div>
+            <input asp-for="Company" type="text" placeholder="Компания-производитель:">
+        </label>
+    </div>
+    <div class="form-item">
+        <label>
+            Конфигурация:
+            <input asp-for="Equipment" type="text" placeholder="Конфигурация:">
+        </label>
+    </div>
+    <div class="form-item">
+        <label>
+            Цена:
+            <div class="invalid-form-value"><span asp-validation-for="Price"></span></div>
+            <input asp-for="Price" type="text" placeholder="Цена:">
+        </label>
+    </div>
+    <div class="form-item">
+        <label>
+            Количество:
+            <div class="invalid-form-value"><span asp-validation-for="Quaintity"></span></div>
+            <input asp-for="Quaintity" type="text" placeholder="Количество:">
+        </label>
+    </div>
+    <div class="form-item rich-text">
+        <label>
+            Описание:
+            <textarea asp-for="Description" class="rich-text" type="text" wrap="soft" placeholder="Описание:"></textarea>
+        </label>
+    </div>
+    <div class="field__wrapper">
+
+        <input asp-for="FormFile" type="file" id="field__file" class="field field__file" multiple>
+
+        <label class="field__file-wrapper" for="field__file">
+            <div class="field__file-fake">Файл не выбран</div>
+            <div class="field__file-button">Выбрать</div>
+        </label>
+
+        </div>
+    <div class="form-item">
+        <label class="triangle-for-select select-container">
+            Категория:
+            <select asp-for="Category" asp-items="@new SelectList(Enum.GetNames(typeof(Categories)))" class="select"></select>
+        </label>
+    </div>
+    <div class="buttons-container">
+        <button class="save-button" type="submit">Сохранить</button>
+        <a asp-action="CRUDproducts" class="cancel-button">Отмена</a>
+    </div>
+</form>
+
+<environment names="Development">
+    <script src="~/js/custom-select.js" asp-append-version="true"></script>
+    <script src="~/js/custom-input-file.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/custom-select.js"></script>
+    <script src="~/js/custom-input-file.js"></script>
+</environment>

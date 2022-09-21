@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoK_Catalog", "TwoK_Catalog\TwoK_Catalog.csproj", "{CCC919BD-C567-47EC-A348-C86E53CDBD49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwoK_Catalog.Tests", "TwoK_Catalog.Tests\TwoK_Catalog.Tests.csproj", "{7BFAC852-7FCD-4A15-A3E7-13D1B9B921AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCC919BD-C567-47EC-A348-C86E53CDBD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC919BD-C567-47EC-A348-C86E53CDBD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC919BD-C567-47EC-A348-C86E53CDBD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC919BD-C567-47EC-A348-C86E53CDBD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFAC852-7FCD-4A15-A3E7-13D1B9B921AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFAC852-7FCD-4A15-A3E7-13D1B9B921AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFAC852-7FCD-4A15-A3E7-13D1B9B921AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFAC852-7FCD-4A15-A3E7-13D1B9B921AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5DA048B9-E6DC-4AE1-B258-5A50857A0ED7}
+	EndGlobalSection
+EndGlobal

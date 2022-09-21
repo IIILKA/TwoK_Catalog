@@ -1,0 +1,41 @@
+﻿@model CartIndexViewModel
+
+<h1 class="main__title">Ваша корзина</h1>
+<div class="main__cart-container">
+    <table class="cart__table">
+        <thead>
+            <th class="col-quantity">Количество</th>
+            <th class="col-product">Товар</th>
+            <th class="col-price">Стоимость</th>
+            <th class="col-subtotal">Промежуточный итог</th>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Cart.CartItems)
+        {
+            <tr>
+                <td class="col-quantity">@item.Quantity</td>
+                <td class="col-product">@item.Product.GetTitle()</td>
+                <td class="col-price">@item.Product.Price</td>
+                <td class="col-subtotal">@((item.Quantity * item.Product.Price).ToString("c"))</td>
+                <td class="col-delete-button">
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="productId" asp-for="@item.Product.Id" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl"/>
+                        <button type="submit" class="delete-button">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"><b>Всего:</b></td>
+                <td class="col-subtotal">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="return-link-container to-order-link-cantainer">
+        <a href="@Model.ReturnUrl" class="return-link"><span>Продолжить покупки</span></a>
+        <a class="to-order-link" asp-controller="Order" asp-action="ToOrder"><span>Перейти к покупке</span></a>
+    </div>
+</div>

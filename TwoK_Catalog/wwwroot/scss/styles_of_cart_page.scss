@@ -1,0 +1,120 @@
+.main__title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.main__cart-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart__table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.25rem;
+
+
+    & thead {
+        height: 2.5rem;
+
+        & .col-quantity {
+            width: 10%;
+        }
+        & .col-product {
+            width: 40%;
+        }
+        & .col-price {
+            width: 20%;
+        }
+        & .col-subtotal {
+            width: 20%;
+        }
+    }
+
+    & tbody {
+        & tr {
+            height: 2.5rem;
+        }
+
+        & tr:nth-child(odd) {
+            background-color: #dce6ee63;
+        }
+
+        & tr:nth-child(even) {
+            background-color: transparent;
+          }
+    }
+
+    & tfoot {
+        text-align: right;
+        
+        & tr {
+            height: 2.5rem;
+        }
+    }
+
+    & .col-quantity {
+        text-align: center;
+    }
+    & .col-product {
+        text-align: left;
+    }
+    & .col-price {
+        text-align: right;
+    }
+    & .col-subtotal {
+        text-align: right;
+        padding-right: 1.25rem;
+    }
+
+    & .col-delete-button {
+        text-align: center;
+        background-color: white;
+
+        & form {
+            margin: 0;
+        }
+
+        & .delete-button {
+            display: inline-block;
+            padding: .25rem .5rem;
+            background-color: #f90;
+            border-radius: 4px;
+            outline: none;
+            border: 2px solid #f90;
+            font-size: .875rem;
+            color: white;
+    
+            &:hover {
+                border-color: rgb(179, 109, 5);
+            }
+        }
+    }
+}
+
+.return-link-container, .to-order-link-container {
+    margin-top: 1.25rem;
+    text-align: center;
+
+    & .return-link, .to-order-link {
+        padding: .5rem 0 .75rem 0;
+        background-color: #09f;
+        border-radius: 4px;
+        outline: none;
+        border: 1px solid #007ce2;
+
+        &:hover {
+            background-color: #1ca4fe;
+        }
+
+        & span {
+            font-size: .9375rem;
+            color: white;
+            margin: 0 .5rem;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/styles_admins_pages.css">
+        <link rel="stylesheet" href="css/styles_of_admin-edit-product-page.css">
+        <link rel="stylesheet" href="css/custom-input-file.css">
+        <title>2k.by</title>
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <header class="admin-header">
+                <h1>Редактирование товара</h1>
+            </header>
+
+            <main class="admin-main">
+                <form action="SaveProduct" method="post">
+                    <div class="form-item">
+                        <label>
+                            Наименование:
+                            <input type="text" placeholder="Наименование:">
+                        </label>
+                    </div>
+                    <div class="form-item">
+                        <label>
+                            Цена:
+                            <input type="text" placeholder="Цена:">
+                        </label>
+                    </div>
+                    <div class="form-item">
+                        <label>
+                            Количество:
+                            <input type="text" placeholder="Количество:">
+                        </label>
+                    </div>
+                    <div class="form-item rich-text">
+                        <label>
+                            Описание:
+                            <textarea class="rich-text" type="text" placeholder="Описание:"></textarea>
+                        </label>
+                    </div>
+                    <div class="field__wrapper">
+  
+                        <input name="file" type="file" name="file" id="field__file-2" class="field field__file" multiple>
+                           
+                        <label class="field__file-wrapper" for="field__file-2">
+                          <div class="field__file-fake">Файл не выбран</div>
+                          <div class="field__file-button">Выбрать</div>
+                        </label>
+                           
+                     </div>
+                    <div class="form-item">
+                        <label class="triangle-for-select select-container">
+                            Категория:
+                            <select class="select" name="categories">
+                                <option value="phone">Телефон</option>
+                                <option value="laptop">Ноутбук</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="buttons-container">
+                        <button class="save-button" type="submit">Сохранить</button>
+                        <a class="cancel-button">Отмена</a>
+                    </div>
+                </form>
+            </main>
+            
+            <script src="js/custom-select.js"></script>
+            <script src="js/custom-input-file.js"></script>
+    </body>
+</html>

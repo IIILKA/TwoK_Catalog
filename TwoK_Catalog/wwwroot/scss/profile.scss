@@ -1,0 +1,114 @@
+.profile-main {
+
+    & .user-name {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        color: #333;
+    }
+
+    & .orders-title {
+        margin-bottom: .5rem;
+        margin-left: .25rem;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    & .orders__table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    
+    
+        & thead {
+            height: 2.5rem;
+            text-align: left;
+    
+            & .col-id {
+                width: 10%;
+                padding-left: .5rem;
+            }
+            & .col-status {
+                width: 20%;
+            }
+            & .col-details-quantity {
+                width: 10%;
+            }
+        }
+    
+        & tbody {
+            text-align: left;
+
+            & tr {
+                height: 2.5rem;
+                
+                & .col-id {
+                    padding-left: .5rem;
+                }
+
+                & .col-status {
+                    &[data-status = "did-not-shiped"] {
+                        color: #d63b3b;
+                    }
+
+                    &[data-status = "did-shiped"] {
+                        color: forestgreen;
+                    }
+                }
+
+                & .col-quantity {
+                    text-align: right;
+                    padding-right: .5rem;
+                }
+            }
+            
+            & .col-title {
+                background-color: #dce6eeb9;
+            }
+            & tr:nth-child(odd):not([class = "col-title"]) {
+                background-color: #dce6ee38;
+            }
+    
+            & tr:nth-child(even) {
+                background-color: transparent;
+            }
+        }
+    }
+
+
+    & .buttons-container {
+        display: flex;
+        justify-content: center;
+        gap: .5rem;
+
+        
+        & .change-password-button {
+            padding: .75rem;
+
+            background-color: #f90;
+            border-radius: 4px;
+            border: 2px solid #f90;
+            color: white;
+            font-weight: 600;
+    
+            &:hover {
+                border-color: rgb(179, 109, 5);
+            }
+        }
+
+        & .log-out-button {
+            padding: .75rem;
+
+            background-color: #f56b6b;
+            border: 1px solid #f56b6b;
+            border-radius: .25rem;
+            color: white;
+            font-weight: 600;
+
+            &:hover {
+                background-color: #d63b3b;
+            }
+        }
+    }
+}

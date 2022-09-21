@@ -1,0 +1,86 @@
+﻿<header class="header">
+    <div class="container">
+        <div class="header__row">
+            <div class="header__logo">
+                <a href="">
+                    <img src="~/img/1k-logo.svg" alt="Логотип" width="195" height="101">
+                </a>
+            </div>
+            <div class="header__elements">
+                <nav class="header__menu menu">
+                    <div class="menu__category-list" data-state="">
+                        <div class="menu__title" data-default="Кталог товаров">Каталог товаров</div>
+                        <div class="menu__catlog-drop">
+                            <a>
+                                <!-- <i class="menu__catalog-icon icon--catalog-comp"></i> -->
+                                <img src="~/img/catalog-comp-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Компьютерная техника</span>
+                            </a>
+                            <a>
+                                <!-- <i class="menu__catalog-icon icon--catalog-digital"></i> -->
+                                <img src="~/img/catalog-phone-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Телефония и связь</span>
+                            </a>
+                            <a>
+                                <!-- <i class="menu__catalog-icon icon--catalog-phone"></i> -->
+                                <img src="~/img/catalog-digital-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Видео, аудио, фото, оптика</span>
+                            </a>
+                            <a>
+                                <!-- <i class="menu__catalog-icon icon--catalog-home-appliances"></i> -->
+                                <img src="~/img/catalog-home-appliances-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Бытовая техника</span>
+                            </a>
+                            <a>
+                                <img src="~/img/catalog-gift-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Подарки и аксессуары</span>
+                            </a>
+                            <a>
+                                <img src="~/img/catalog-soft-icon.png" class="icon--catalog">
+                                <span calss="menu__link">Софт, фильмы, музыка</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="" class="header__link">Новости</a>
+                    <a href="" class="header__link">Обзоры</a>
+                </nav>
+                <div class="header__search-and-authorization">
+                    <form class="header__search-bar search" method="get">
+                        <label class="text-field__label">
+                            <input class="text-field__input" type="text" name="search-line" data-state="searchInSite" placeholder="Поиск по сайту">
+                        </label>
+                        <label class="triangle-for-select search__details" data-state="">
+                            <select name="searchFor" class="select search__select" data-state="">
+                                <option value="products" class="search__option" selected>Каталог товаров</option>
+                                <option value="news" class="search__option">Новости</option>
+                                <option value="reviews" class="search__option">Обзоры</option>
+                            </select>
+                        </label>
+                        <button class="search__button" type="submit">Найти</button>
+                    </form>
+                    <div class="header__authorization">
+                        @if(User.Identity.IsAuthenticated)
+                        {
+                            <div class="profile-icon-container">
+                                <a class="profile-icon-button" asp-controller="Account" asp-action="Profile"
+                                    asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
+                                    <iconify-icon icon="healthicons:ui-user-profile"></iconify-icon>
+                                </a>
+                            </div>
+                            @await Component.InvokeAsync("CartSummary")
+                        }
+                        else
+                        {
+                            <a href="#popup__log-in" class="popup-link header__log-in">
+                            <span>Войти</span>
+                            </a>
+                            <a href="#popup__sign-up" class="popup-link header__sign-up">
+                                <span>Регистрация</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

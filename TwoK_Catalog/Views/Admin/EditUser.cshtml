@@ -1,0 +1,48 @@
+﻿@model EditUserViewModel
+
+@{
+    ViewBag.Title = Model.UserId == null ? "Конструктор пользователя" : "Редактирование пользователя";
+    Layout = "_AdminLayout";
+}
+<div class="admin-main__edit-user">
+    <form action="EditUser" method="post">
+        <input type="hidden" asp-for="UserId"/>
+        <div class="form-item">
+            <label>
+                Логин:
+                <div class="invalid-form-value"><span asp-validation-for="UserName"></span></div>
+                <input asp-for="UserName" type="text" placeholder="Логин:">
+            </label>
+        </div>
+        <div class="form-item">
+            <label>
+                Email:
+                <div class="invalid-form-value"><span asp-validation-for="Email"></span></div>
+                <input type="hidden" asp-for="Email"/>
+                <input type="text" value="@Model.Email" placeholder="Email:" disabled>
+            </label>
+        </div>
+        <div class="form-item">
+            <label class="triangle-for-select select-container">
+                Права доступа:
+                <select class="select" asp-for="Role">
+                    <option value="User">Обычный пользователь</option>
+                    <option value="JuniorAdmin">Младший админ</option>
+                    <option value="SeniorAdmin">Старший админ</option>
+                </select>
+            </label>
+        </div>
+        <div class="buttons-container">
+            <button class="save-button" type="submit">Сохранить</button>
+            <a class="cancel-button">Отмена</a>
+        </div>
+    </form>
+</div>
+<environment names="Development">
+    <script src="~/js/custom-select.js" asp-append-version="true"></script>
+    <script src="~/js/custom-input-file.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/custom-select.js"></script>
+    <script src="~/js/custom-input-file.js"></script>
+</environment>

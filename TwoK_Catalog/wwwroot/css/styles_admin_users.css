@@ -1,0 +1,243 @@
+.admin-main .admin-main__users {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 1.25rem 2rem 1.25rem;
+}
+.admin-main .admin-main__users .sort-form-items-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #444;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item input {
+  display: block;
+  height: 2rem;
+  width: 100%;
+  padding: 0 1rem;
+  margin-top: 0.25rem;
+  outline: none;
+  background-color: white;
+  border: 2px solid #c5d5e2;
+  border-radius: 4px;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container {
+  position: relative;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container::after {
+  content: "";
+  position: absolute;
+  top: 70%;
+  right: 16px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: block;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: #9badbb transparent transparent transparent;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container[data-state=mouseOver]::after {
+  border-color: rgba(8, 126, 243, 0.856) transparent transparent transparent;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container select {
+  margin-top: 0.25rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  font-size: 1rem;
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  background-color: white;
+  border: 2px solid #c5d5e2;
+  border-radius: 4px;
+  height: 2rem;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container select:hover {
+  color: #06c;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-form-item .select-container select option {
+  font-size: 1rem;
+  color: black;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-button-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-button-container .to-sort-button {
+  width: auto;
+  height: auto;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #09f;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #007ce2;
+  font-size: 1rem;
+  color: white;
+}
+.admin-main .admin-main__users .sort-form-items-container .sort-form-row .sort-button-container .to-sort-button:hover {
+  background-color: #1ca4fe;
+}
+.admin-main .admin-main__users .users__table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  border: #c5d5e2 2px solid;
+}
+.admin-main .admin-main__users .users__table thead {
+  height: 2.5rem;
+  text-align: left;
+  color: #222;
+}
+.admin-main .admin-main__users .users__table thead th {
+  border: #c5d5e2 2px solid;
+  padding-left: 0.5rem;
+}
+.admin-main .admin-main__users .users__table thead .col-username {
+  width: 20%;
+}
+.admin-main .admin-main__users .users__table thead .col-email {
+  width: 30%;
+}
+.admin-main .admin-main__users .users__table thead .col-category {
+  width: 25%;
+}
+.admin-main .admin-main__users .users__table thead .col-actions {
+  width: auto;
+  text-align: center;
+  padding-left: 0;
+}
+.admin-main .admin-main__users .users__table tbody {
+  text-align: left;
+}
+.admin-main .admin-main__users .users__table tbody tr {
+  height: 5rem;
+}
+.admin-main .admin-main__users .users__table tbody tr td {
+  border: #c5d5e2 2px solid;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.admin-main .admin-main__users .users__table tbody tr:hover {
+  background-color: #f6f8fa;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions {
+  text-align: center;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions form {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .edit-button {
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+  background-color: #f90;
+  border-radius: 4px;
+  border: 2px solid #f90;
+  font-size: 0.875rem;
+  color: white;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .edit-button:hover {
+  border-color: rgb(179, 109, 5);
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .edit-button:disabled {
+  background-color: rgba(255, 153, 0, 0.658);
+  border-color: rgba(255, 153, 0, 0.658);
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .delete-button {
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.25rem;
+  background-color: #f56b6b;
+  border-radius: 4px;
+  border: 2px solid #f56b6b;
+  outline: none;
+  font-size: 0.875rem;
+  color: white;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .delete-button:hover {
+  background-color: #d63b3b;
+}
+.admin-main .admin-main__users .users__table tbody .col-actions .delete-button:disabled {
+  background-color: rgba(245, 107, 107, 0.6235294118);
+  border-color: rgba(245, 107, 107, 0.6235294118);
+}
+.admin-main .admin-main__users .add-button-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+.admin-main .admin-main__users .add-button-container .add-button {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #09f;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #007ce2;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.admin-main .admin-main__users .add-button-container .add-button:hover {
+  background-color: #1ca4fe;
+}

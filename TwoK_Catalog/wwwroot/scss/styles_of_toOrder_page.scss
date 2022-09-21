@@ -1,0 +1,120 @@
+.main__title{
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.order-form {
+    margin-top: 1.25rem;
+
+    & .input-container {
+        margin-bottom: .75rem;
+        & input {
+            display: block;
+            height: 2rem;
+            width: 100%;
+            padding: 0 1rem;
+            margin-top: .25rem;
+            outline: none;
+            background-color: white;
+            border: 2px solid #c5d5e2;
+            border-radius: 4px;
+        }
+    }
+    
+    
+    .select-container{
+        position: relative;
+    
+        &::after{
+            content: "";
+            position: absolute;
+            top: 70%;
+            right: 16px;
+            transform: translateY(-50%);
+            display: block;
+        
+            pointer-events: none;
+    
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 5px 0 5px;
+            border-color: #9badbb transparent transparent transparent;
+        }
+    
+        &[data-state="mouseOver"]::after{
+            border-color: rgba(8, 126, 243, 0.856) transparent transparent transparent;
+        }
+    
+        & select {
+            // Убираем стандартную стрелочку
+            margin-top: .25rem;
+            appearance: none;
+            outline: none;
+    
+            position: relative;
+            display: block;
+            width: 100%;
+            text-align: left;
+    
+            background-color: white;
+            border: 2px solid #c5d5e2;
+            border-radius: 4px;
+            height: 2.5rem;
+            padding: 8px 37px 8px 20px;
+    
+            cursor: pointer;
+    
+            &:hover{
+                color: #06c;
+            }
+    
+            & option{
+                color: black;
+            }
+        }
+    }
+    
+    
+    .btn-container {
+        margin-top: 1.25rem;
+        text-align: center;
+    
+        & .btn {
+            padding: .75rem;
+            background-color: #09f;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid #007ce2;
+    
+            font-size: .9375rem;
+            color: white;
+    
+            &:hover {
+                background-color: #1ca4fe;
+            }
+        }
+    }
+    
+    .text-danger {
+        padding-left: .5rem;
+    
+        & li {
+            font-size: .9375rem;
+            color: #f56b6b;
+            font-weight: 600;
+            margin-bottom: .25rem;
+            list-style: inside;
+        }
+    }
+    
+}
+
+.comleted-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #f90;
+}

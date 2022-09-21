@@ -1,0 +1,93 @@
+﻿@model IEnumerable<EditUserViewModel>
+
+@{
+    ViewBag.Title = "Список пользователей";
+    Layout = "_AdminLayout";
+}
+
+<div class="admin-main__users">
+    @if (TempData["message"] != null)
+    {
+        <div class="changes-success">@TempData["message"]</div>
+    }
+    <form action="SortUsers" method="get">
+        <div class="sort-form-items-container">
+            <div class="sort-form-row">
+                <div class="sort-form-item">
+                    <label>
+                        Логин:
+                        <input type="text" name="username" placeholder="Логин:">
+                    </label>
+                </div>
+                <div class="sort-form-item">
+                    <label>
+                        Email:
+                        <input type="text" name="email" placeholder="Email:">
+                    </label>
+                </div>
+            </div>
+            <div class="sort-form-row">
+                <div class="sort-form-item">
+                    <label class="triangle-for-select select-container" data-state="">
+                        Права доступа:
+                        <select class="select" data-state="">
+                            <option value=""></option>
+                            <option value="phone">Обычный пользователь</option>
+                            <option value="laptop">Младший админ</option>
+                            <option value="laptop">Старший админ</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="sort-form-row">
+                <div class="sort-button-container">
+                    <button class="to-sort-button" type="submit">Фильтр</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="users__table">
+        <thead>
+            <th class="col-username">Логин</th>
+            <th class="col-email">Email</th>
+            <th class="col-category">Права доступа</th>
+            <th class="col-actions">Действия</th>
+        </thead>
+        <tbody>
+            @foreach(var user in Model)
+            {
+            <tr>
+                <td class="col-username">@user.UserName</td>
+                <td class="col-email">@user.Email</td>
+                <td class="col-category">@user.Role</td>
+                <td class="col-actions">
+                    <form asp-action="DeleteUser" method="post">
+                        @if(user.Role != "SeniorAdmin")
+                        {
+                            <a class="edit-button" asp-action="EditUser" asp-route-userId="@user.UserId">Редактировать</a>
+                            <input type="hidden" name="userId" value="@user.UserId"/>
+                            <button type="submit" class="delete-button">Удалить</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="edit-button" disabled>Редактировать</button>
+                            <button type="submit" class="delete-button" disabled>Удалить</button>
+                        }
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <div class="add-button-container">
+        <a class="add-button" asp-action="CreateUser">Добавить</a>
+        <a class="to-HomeIndex-button" asp-controller="Home" asp-action="Index">На главную</a>
+    </div>
+</div>
+
+<environment names="Development">
+     <script src="~/js//custom-select.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js//custom-select.js"></script>
+</environment>

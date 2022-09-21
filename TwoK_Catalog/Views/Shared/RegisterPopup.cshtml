@@ -1,0 +1,52 @@
+﻿@model RegisterViewModel
+
+@if(Model.IsFailed)
+{
+    ViewBag.PopupClass = @"popup open";
+}
+else
+{
+    ViewBag.PopupClass = @"popup";
+}
+
+<div id="popup__sign-up" class="@ViewBag.PopupClass">
+    <div class="popup__body">
+        <div class="popup__content">
+            <a href="" class="popup__close close-popup"><i class="gg-close"></i></a>
+            <div class="popup__title">Регистрация</div>
+            @if (Model.ErrorMessages != null)
+            {
+                <div class="text-danger-container">
+                    <ul>
+                    @foreach (var error in Model.ErrorMessages)
+                    {
+                        <li class="text-danger">@error</li>
+                    }
+                    </ul>
+                </div>
+            }
+            <form asp-controller="Account" asp-action="Register" class="popup__form" method="post">
+                <input type="hidden" asp-for="ReturnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                <label class="popup-text-field__label">
+                    <input asp-for="Name" class="popup-text-field__input" type="text" placeholder="Логин">
+                </label>
+                <label class="popup-text-field__label">
+                    <input asp-for="Email" class="popup-text-field__input" type="text" placeholder="E-Mail">
+                </label>
+                <label class="popup-text-field__label">
+                    <input asp-for="Password" class="popup-text-field__input" type="password" placeholder="Пароль">
+                </label>
+                <label class="popup-text-field__label">
+                    <input asp-for="PasswordConfirm" class="popup-text-field__input" type="password" placeholder="Пароль ещё раз">
+                </label>
+                <div class="popup__details">
+                    <div class="checkbox--container">
+                        <input asp-for="RememberMe" id="rememberMe2" type="checkbox" checked>
+                        <label for="#rememberMe2">Запомнить меня</label>
+                    </div>
+                </div>
+                <button class="popup__button" type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+</div>

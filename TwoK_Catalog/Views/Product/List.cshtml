@@ -1,0 +1,472 @@
+﻿@model ProductsListViewModel
+
+
+    <ul class="breadcrumb">
+        <li><a href="#">Телефония и связь</a></li>
+        <li>Каталог мобильных телефонов</li>
+    </ul>
+    <h1 class="main__title">Мобильные телефоны</h1>
+    <div class="main__container">
+        <form class="main__sorting-bar sorting-bar">
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Поиск по названию</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <label class="sorting-bar__label">
+                        <input type="text" name="nameSearch">
+                    </label>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Цена (б.р.)</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row">
+                        <label for="#minPrice" class="sorting-bar__label-in-row">
+                            <span class="input-span">от</span>
+                            <input type="text" name="minPrice" id="minPrice">
+                        </label>
+                        <label for="#maxPrice" class="sorting-bar__label-in-row">
+                            <span class="input-span">до</span>
+                            <input type="text" name="maxPrice" id="maxPrice">
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Производители</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__grid">
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/huawei.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/xiaomi.png" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/apple.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/samsung.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/honor.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/realmi.svg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/oneplus.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/nokia.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/oppo.png" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/google.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/sony.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__picture-checkbox" data-isActive="false">
+                            <img class="checkbox-img" src="~/img/producers/vivo.jpg" alt="">
+                        </div>
+                        <div class="sorting-bar__show-all-checkbox">
+                            <span>Все производители</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Платформа</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <input type="checkbox" class="custom-checkbox" id="andriod" name="andriod" value="true">
+                    <label for="andriod">Andriod</label>
+                    <input type="checkbox" class="custom-checkbox" id="iOS" name="iOS" value="true">
+                    <label for="iOS">iOS</label>
+                    <input type="checkbox" class="custom-checkbox" id="windows-phone" name="windows-phone" value="true">
+                    <label for="windows-phone">Windows Phone</label>
+                    <input type="checkbox" class="custom-checkbox" id="harmonyOS" name="harmonyOS" value="true">
+                    <label for="harmonyOS">HarmonyOS</label>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Год выхода на рынок</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row-selects">
+                        <div class="select-container">
+                            <span class="select-span">от</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="minYear" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="2012" class="search__option">2012</option>
+                                    <option value="2013" class="search__option">2013</option>
+                                    <option value="2014" class="search__option">2014</option>
+                                    <option value="2015" class="search__option">2015</option>
+                                    <option value="2016" class="search__option">2016</option>
+                                    <option value="2017" class="search__option">2017</option>
+                                    <option value="2018" class="search__option">2018</option>
+                                    <option value="2019" class="search__option">2019</option>
+                                    <option value="2020" class="search__option">2020</option>
+                                    <option value="2021" class="search__option">2021</option>
+                                    <option value="2022" class="search__option">2022</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="select-container">
+                            <span class="select-span">до</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="maxYear" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="2012" class="search__option">2012</option>
+                                    <option value="2013" class="search__option">2013</option>
+                                    <option value="2014" class="search__option">2014</option>
+                                    <option value="2015" class="search__option">2015</option>
+                                    <option value="2016" class="search__option">2016</option>
+                                    <option value="2017" class="search__option">2017</option>
+                                    <option value="2018" class="search__option">2018</option>
+                                    <option value="2019" class="search__option">2019</option>
+                                    <option value="2020" class="search__option">2020</option>
+                                    <option value="2021" class="search__option">2021</option>
+                                    <option value="2022" class="search__option">2022</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Диагональ экрана</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row-selects">
+                        <div class="select-container">
+                            <span class="select-span">от</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="minScreen" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="0.66" class="search__option">0.66</option>
+                                    <option value="1.4" class="search__option">1.4</option>
+                                    <option value="1.43" class="search__option">1.43</option>
+                                    <option value="1.44" class="search__option">1.44</option>
+                                    <option value="1.45" class="search__option">1.45</option>
+                                    <option value="1.5" class="search__option">1.5</option>
+                                    <option value="1.52" class="search__option">1.52</option>
+                                    <option value="1.54" class="search__option">1.54</option>
+                                    <option value="1.64" class="search__option">1.64</option>
+                                    <option value="1.7" class="search__option">1.7</option>
+                                    <option value="1.77" class="search__option">1.77</option>
+                                    <option value="1.8" class="search__option">1.8</option>
+                                    <option value="2" class="search__option">2</option>
+                                    <option value="2.2" class="search__option">2.2</option>
+                                    <option value="2.3" class="search__option">2.3</option>
+                                    <option value="2.4" class="search__option">2.4</option>
+                                    <option value="2.6" class="search__option">2.6</option>
+                                    <option value="5" class="search__option">5</option>
+                                    <option value="5.1" class="search__option">5.1</option>
+                                    <option value="5.2" class="search__option">5.2</option>
+                                    <option value="5.4" class="search__option">5.4</option>
+                                    <option value="5.5" class="search__option">5.5</option>
+                                    <option value="5.7" class="search__option">5.7</option>
+                                    <option value="5.9" class="search__option">5.9</option>
+                                    <option value="6" class="search__option">6</option>
+                                    <option value="6.1" class="search__option">6.1</option>
+                                    <option value="6.7" class="search__option">6.7</option>
+                                    <option value="6.9" class="search__option">6.9</option>
+                                    <option value="7" class="search__option">7</option>
+                                    <option value="7.09" class="search__option">7.09</option>
+                                    <option value="7.12" class="search__option">7.12</option>
+                                    <option value="7.2" class="search__option">7.2</option>
+                                    <option value="7.3" class="search__option">7.3</option>
+                                    <option value="7.6" class="search__option">7.6</option>
+                                    <option value="8" class="search__option">8</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="select-container">
+                            <span class="select-span">до</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="maxScreen" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="0.66" class="search__option">0.66</option>
+                                    <option value="1.4" class="search__option">1.4</option>
+                                    <option value="1.43" class="search__option">1.43</option>
+                                    <option value="1.44" class="search__option">1.44</option>
+                                    <option value="1.45" class="search__option">1.45</option>
+                                    <option value="1.5" class="search__option">1.5</option>
+                                    <option value="1.52" class="search__option">1.52</option>
+                                    <option value="1.54" class="search__option">1.54</option>
+                                    <option value="1.64" class="search__option">1.64</option>
+                                    <option value="1.7" class="search__option">1.7</option>
+                                    <option value="1.77" class="search__option">1.77</option>
+                                    <option value="1.8" class="search__option">1.8</option>
+                                    <option value="2" class="search__option">2</option>
+                                    <option value="2.2" class="search__option">2.2</option>
+                                    <option value="2.3" class="search__option">2.3</option>
+                                    <option value="2.4" class="search__option">2.4</option>
+                                    <option value="2.6" class="search__option">2.6</option>
+                                    <option value="5" class="search__option">5</option>
+                                    <option value="5.1" class="search__option">5.1</option>
+                                    <option value="5.2" class="search__option">5.2</option>
+                                    <option value="5.4" class="search__option">5.4</option>
+                                    <option value="5.5" class="search__option">5.5</option>
+                                    <option value="5.7" class="search__option">5.7</option>
+                                    <option value="5.9" class="search__option">5.9</option>
+                                    <option value="6" class="search__option">6</option>
+                                    <option value="6.1" class="search__option">6.1</option>
+                                    <option value="6.7" class="search__option">6.7</option>
+                                    <option value="6.9" class="search__option">6.9</option>
+                                    <option value="7" class="search__option">7</option>
+                                    <option value="7.09" class="search__option">7.09</option>
+                                    <option value="7.12" class="search__option">7.12</option>
+                                    <option value="7.2" class="search__option">7.2</option>
+                                    <option value="7.3" class="search__option">7.3</option>
+                                    <option value="7.6" class="search__option">7.6</option>
+                                    <option value="8" class="search__option">8</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Платформа</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="container-for-many-items">
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_2160x3840" name="2160x3840" value="true">
+                        <label for="checkbox_2160x3840">2160x3840 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1600x2560" name="1600x2560" value="true">
+                        <label for="checkbox_1600x2560">1600x2560 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1440x3040" name="1440x3040" value="true">
+                        <label for="checkbox_1440x3040">1440x3040 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1440x3120" name="1440x3120" value="true">
+                        <label for="checkbox_1440x3120">1440x3120 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1440x2960" name="1440x2960" value="true">
+                        <label for="checkbox_1440x2960">1440x2960 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1440x2880" name="1440x2880" value="true">
+                        <label for="checkbox_1440x2880">1440x2880 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1440x2560" name="1440x2560" value="true">
+                        <label for="checkbox_1440x2560">1440x2560 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1242x2688" name="1242x2688" value="true">
+                        <label for="checkbox_1242x2688">1242x2688 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1125x2436" name="1125x2436" value="true">
+                        <label for="checkbox_1125x2436">1125x2436 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1152x1920" name="1152x1920" value="true">
+                        <label for="checkbox_1152x1920">1152x1920 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2316" name="1080x2316" value="true">
+                        <label for="checkbox_1080x2316">1080x2316 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2220" name="1080x2220" value="true">
+                        <label for="checkbox_1080x2220">1080x2220 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2160" name="1080x2160" value="true">
+                        <label for="checkbox_1080x2160">1080x2160 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2240" name="1080x2240" value="true">
+                        <label for="checkbox_1080x2240">1080x2240 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2244" name="1080x2244" value="true">
+                        <label for="checkbox_1080x2244">1080x2244 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2246" name="1080x2246" value="true">
+                        <label for="checkbox_1080x2246">1080x2246 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2248" name="1080x2248" value="true">
+                        <label for="checkbox_1080x2248">1080x2248 px</label>
+                        <input type="checkbox" class="custom-checkbox" id="checkbox_1080x2280" name="1080x2280" value="true">
+                        <label for="checkbox_1080x2280">1080x2280 px</label>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__body">
+                    <input type="checkbox" class="custom-checkbox" id="memoryCardSlot" name="memoryCardSlot" value="true">
+                    <label for="memoryCardSlot">Слот для карты памяти</label>
+                    <input type="checkbox" class="custom-checkbox" id="LTE" name="LTE" value="true">
+                    <label for="LTE">Поддержка LTE</label>
+                    <input type="checkbox" class="custom-checkbox" id="5G" name="5G" value="true">
+                    <label for="5G">Поддержка 5G</label>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Объем оперативной памяти</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row-selects">
+                        <div class="select-container">
+                            <span class="select-span">от</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="minRAM" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="48" class="search__option">48</option>
+                                    <option value="512" class="search__option">512</option>
+                                    <option value="768" class="search__option">768</option>
+                                    <option value="1024" class="search__option">1024</option>
+                                    <option value="1536" class="search__option">1536</option>
+                                    <option value="2048" class="search__option">2048</option>
+                                    <option value="3072" class="search__option">3072</option>
+                                    <option value="4096" class="search__option">4096</option>
+                                    <option value="6144" class="search__option">6144</option>
+                                    <option value="8192" class="search__option">8192</option>
+                                    <option value="10000" class="search__option">10000</option>
+                                    <option value="12000" class="search__option">12000</option>
+                                    <option value="12288" class="search__option">12288</option>
+                                    <option value="16384" class="search__option">16384</option>
+                                    <option value="18432" class="search__option">18432</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="select-container">
+                            <span class="select-span">до</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="maxRAM" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="48" class="search__option">48</option>
+                                    <option value="512" class="search__option">512</option>
+                                    <option value="768" class="search__option">768</option>
+                                    <option value="1024" class="search__option">1024</option>
+                                    <option value="1536" class="search__option">1536</option>
+                                    <option value="2048" class="search__option">2048</option>
+                                    <option value="3072" class="search__option">3072</option>
+                                    <option value="4096" class="search__option">4096</option>
+                                    <option value="6144" class="search__option">6144</option>
+                                    <option value="8192" class="search__option">8192</option>
+                                    <option value="10000" class="search__option">10000</option>
+                                    <option value="12000" class="search__option">12000</option>
+                                    <option value="12288" class="search__option">12288</option>
+                                    <option value="16384" class="search__option">16384</option>
+                                    <option value="18432" class="search__option">18432</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Объем встроенной памяти</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row-selects">
+                        <div class="select-container">
+                            <span class="select-span">от</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="minROM" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="0.004" class="search__option">0.004</option>
+                                    <option value="0.01" class="search__option">0.01</option>
+                                    <option value="0.1" class="search__option">0.1</option>
+                                    <option value="0.5" class="search__option">0.5</option>
+                                    <option value="1" class="search__option">1</option>
+                                    <option value="1.5" class="search__option">1.5</option>
+                                    <option value="2" class="search__option">2</option>
+                                    <option value="3" class="search__option">3</option>
+                                    <option value="4" class="search__option">4</option>
+                                    <option value="8" class="search__option">8</option>
+                                    <option value="16" class="search__option">16</option>
+                                    <option value="32" class="search__option">32</option>
+                                    <option value="64" class="search__option">64</option>
+                                    <option value="128" class="search__option">128</option>
+                                    <option value="256" class="search__option">256</option>
+                                    <option value="512" class="search__option">512</option>
+                                    <option value="1000" class="search__option">1000</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="select-container">
+                            <span class="select-span">до</span>
+                            <label class="sorting-bar__select-label" data-state="">
+                                <select name="maxROM" class="sorting-bar__select" data-state="">
+                                    <option value="void" class="search__option" selected></option>
+                                    <option value="0.004" class="search__option">0.004</option>
+                                    <option value="0.01" class="search__option">0.01</option>
+                                    <option value="0.1" class="search__option">0.1</option>
+                                    <option value="0.5" class="search__option">0.5</option>
+                                    <option value="1" class="search__option">1</option>
+                                    <option value="1.5" class="search__option">1.5</option>
+                                    <option value="2" class="search__option">2</option>
+                                    <option value="3" class="search__option">3</option>
+                                    <option value="4" class="search__option">4</option>
+                                    <option value="8" class="search__option">8</option>
+                                    <option value="16" class="search__option">16</option>
+                                    <option value="32" class="search__option">32</option>
+                                    <option value="64" class="search__option">64</option>
+                                    <option value="128" class="search__option">128</option>
+                                    <option value="256" class="search__option">256</option>
+                                    <option value="512" class="search__option">512</option>
+                                    <option value="1000" class="search__option">1000</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__body">
+                    <input type="checkbox" class="custom-checkbox" id="fingerprintScanner" name="fingerprintScanner" value="true">
+                    <label for="fingerprintScanner">Сканер отпечатка пальца</label>
+                    <input type="checkbox" class="custom-checkbox" id="waterProtection" name="waterProtection" value="true">
+                    <label for="waterProtection">Водозащита</label>
+                </div>
+            </div>
+            <div class="sorting-bar__box" data-isActive="true">
+                <div class="sorting-bar__head">
+                    <span class="sorting-bar__title">Емкость аккумулятора, мА*ч</span>
+                </div>
+                <div class="sorting-bar__body">
+                    <div class="sorting-bar__row">
+                        <label class="sorting-bar__label-in-row">
+                            <span class="input-span">от</span>
+                            <input type="text" name="minBatteryCapacity" id="minBatteryCapacity">
+                        </label>
+                        <label class="sorting-bar__label-in-row">
+                            <span class="input-span">до</span>
+                            <input type="text" name="maxBatteryCapacity" id="maxBatteryCapacity">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="products">
+            <div class="products__controls">
+                <div class="products__control">
+                    <span class="control-title">Сортировать по</span>
+                    <div class="triangle-for-select sortBy__select-container" data-state="">
+                        <select name="sortBy" class="select sortBy__select" data-state="">
+                            <option value="byAlphabetically">названию А-Я</option>
+                            <option value="byAlphabeticallyRevers">названию Я-А</option>
+                            <option value="byPopularity" selected>популярности</option>
+                            <option value="byPrice">цене(начать с дешевых)</option>
+                            <option value="byPriceRevers">цене(начать с дорогих)</option>
+                            <option value="byNovelty">новизне</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products__control">
+                    <span class="control-title">Вид</span>
+                    <button type="button" title="Стандартный вид" class="products__button standartViewButton" data-isActive="true"></button>
+                    <button type="button" title="Табличный вид" class="products__button tableViewButton" data-isActive="false"></button>
+                    <button type="button" title="Список" class="products__button listViewButton" data-isActive="false"></button>
+                </div>
+            </div>
+            <div class="products__items">
+                <div class="compare-form">
+                    @foreach (var p in Model.Products)
+                    {
+                        @Html.Partial("ProductSummary", p)
+                    }   
+                </div>
+            </div>
+            <div page-model="@Model.PageInfo" page-action="List" page-classes-enabled="true" page-class="page-link"
+                page-class-normal="page-link-normal" page-class-selected="page-link-selected" class="page-links"></div>
+        </div>
+    </div>
+

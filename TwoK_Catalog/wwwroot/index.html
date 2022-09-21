@@ -1,0 +1,630 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/close.css">
+    <title>2k.by</title>
+</head>
+<body class="body">
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__row">
+                    <div class="header__logo">
+                        <a href="">
+                            <img src="img/1k-logo.svg" alt="Логотип" width="195" height="101">
+                        </a>
+                    </div>
+                    <div class="header__elements">
+                        <nav class="header__menu menu">
+                            <div class="menu__category-list" data-state="">
+                                <div class="menu__title" data-default="Кталог товаров">Каталог товаров</div>
+                                <div class="menu__catlog-drop">
+                                    <a>
+                                        <!-- <i class="menu__catalog-icon icon--catalog-comp"></i> -->
+                                        <img src="img/catalog-comp-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Компьютерная техника</span>
+                                    </a>
+                                    <a>
+                                        <!-- <i class="menu__catalog-icon icon--catalog-digital"></i> -->
+                                        <img src="img/catalog-phone-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Телефония и связь</span>
+                                    </a>
+                                    <a>
+                                        <!-- <i class="menu__catalog-icon icon--catalog-phone"></i> -->
+                                        <img src="img/catalog-digital-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Видео, аудио, фото, оптика</span>
+                                    </a>
+                                    <a>
+                                        <!-- <i class="menu__catalog-icon icon--catalog-home-appliances"></i> -->
+                                        <img src="img/catalog-home-appliances-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Бытовая техника</span>
+                                    </a>
+                                    <a>
+                                        <img src="img/catalog-gift-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Подарки и аксессуары</span>
+                                    </a>
+                                    <a>
+                                        <img src="img/catalog-soft-icon.png" class="icon--catalog">
+                                        <span calss="menu__link">Софт, фильмы, музыка</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="" class="header__link">Новости</a>
+                            <a href="" class="header__link">Обзоры</a>
+                        </nav>
+                        <div class="header__search-and-authorization">
+                            <form class="header__search-bar search" method="get">
+                                <label class="text-field__label">
+                                    <input class="text-field__input" type="text" name="search-line" data-state="searchInSite" placeholder="Поиск по сайту">
+                                </label>
+                                <label class="triangle-for-select search__details" data-state="">
+                                    <select name="searchFor" class="select search__select" data-state="">
+                                        <option value="products" class="search__option" selected>Каталог товаров</option>
+                                        <option value="news" class="search__option">Новости</option>
+                                        <option value="reviews" class="search__option">Обзоры</option>
+                                    </select>
+                                </label>
+                                <button class="search__button" type="submit">Найти</button>
+                            </form>
+                            <div class="header__authorization">
+                                <a href="#popup__log-in" class="popup-link header__log-in">
+                                    <span>Войти</span>
+                                </a>
+                                <a href="#popup__sign-up" class="popup-link header__sign-up">
+                                    <span>Регистрация</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__category">
+                <div class="catalog">
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-comp-icon.png" class="icon--catalog"></img>Компьютерная техника
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Видеокарты</a>
+                            <a href="#" class="catalog__sub-link">Жесткие диски</a>
+                            <a href="#" class="catalog__sub-link">Твердотельные накопители (SSD)</a>
+                            <a href="#" class="catalog__sub-link">Планшеты</a>
+                            <a href="#" class="catalog__sub-link">Моноблоки</a>
+                            <a href="#" class="catalog__sub-link">Компьютеры и неттопы</a>
+                            <a href="#" class="catalog__sub-link">Электронные книги</a>
+                            <a href="#" class="catalog__sub-link">Игровые приставки</a>
+                            <a href="#" class="catalog__sub-link">IP и CCTV камеры</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-phone-icon.png" class="icon--catalog"></img>Телефония и связь
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Мобильные телефоны</a>
+                            <a href="#" class="catalog__sub-link">Радиотелефоны</a>
+                            <a href="#" class="catalog__sub-link">Рации</a>
+                            <a href="#" class="catalog__sub-link">VoIP-оборудование</a>
+                            <a href="#" class="catalog__sub-link">Чехлы для телефонов</a>
+                            <a href="#" class="catalog__sub-link">Bluetooth гарнитуры</a>
+                            <a href="#" class="catalog__sub-link">Портативные зарядные устройства</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-digital-icon.png" class="icon--catalog"></img>Видео, аудио, фото, оптика
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Наушники и гарнитуры</a>
+                            <a href="#" class="catalog__sub-link">Акустические системы</a>
+                            <a href="#" class="catalog__sub-link">Портативная акустика</a>
+                            <a href="#" class="catalog__sub-link">Телевизоры</a>
+                            <a href="#" class="catalog__sub-link">Проекторы</a>
+                            <a href="#" class="catalog__sub-link">Экшн-камеры</a>
+                            <a href="#" class="catalog__sub-link">Цифровые фотоаппараты</a>
+                            <a href="#" class="catalog__sub-link">Объективы</a>
+                            <a href="#" class="catalog__sub-link">Телескопы</a>
+                            <a href="#" class="catalog__sub-link">Электрогитары и бас-гитары</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-home-appliances-icon.png" class="icon--catalog"></img>Бытовая техника
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Стиральные машины</a>
+                            <a href="#" class="catalog__sub-link">Пылесосы</a>
+                            <a href="#" class="catalog__sub-link">Вертикальные пылесосы</a>
+                            <a href="#" class="catalog__sub-link">Холодильники</a>
+                            <a href="#" class="catalog__sub-link">Плиты</a>
+                            <a href="#" class="catalog__sub-link">Мультиварки</a>
+                            <a href="#" class="catalog__sub-link">Электрочайники и термопоты</a>
+                            <a href="#" class="catalog__sub-link">Фены</a>
+                            <a href="#" class="catalog__sub-link">Зубные щетки</a>
+                            <a href="#" class="catalog__sub-link">Кондиционеры</a>
+                            <a href="#" class="catalog__sub-link">Очистители и увлажнители воздуха</a>
+                            <a href="#" class="catalog__sub-link">Вентиляторы</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-gift-icon.png" class="icon--catalog"></img>Подарки и аксессуары
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Наручные часы</a>
+                            <a href="#" class="catalog__sub-link">Умные часы и браслеты</a>
+                            <a href="#" class="catalog__sub-link">Ремешки для умных часов и браслетов</a>
+                            <a href="#" class="catalog__sub-link">3D-ручки</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                    <div class="catalog__item">
+                        <h3 class="catalog__title">
+                            <a href="#" class="catalog__link">
+                                <img src="img/catalog-soft-icon.png" class="icon--catalog"></img>Софт, фильмы, музыка
+                            </a>
+                        </h3>
+                        <nav class="catalog__sub">
+                            <a href="#" class="catalog__sub-link">Антивирусные программы</a>
+                            <a href="#" class="catalog__more">...</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="main__column-right">
+                    <a href="#">
+                        <img src="img/seasons-advertisement/summer-advertisement/tents-advertiseme.png" width="240px" height="400px"></img>
+                    </a>
+                </div>
+            </div>
+            <section class="main__news-feed news-feed">
+                <h2 class="news-feed__title">
+                    <a href="#" class="main__link">Новости</a>
+                </h2>
+                <div class="news-feed__view">
+                    <div class="news-feed__item news-feed__item-main">
+                        <a href="#" class="news-feed__card news-card">
+                            <img src="img/news/news1.jpeg" alt="Инсайдер предсказывает три новых сенсора камеры для флагмана Sony Xperia 1 V">
+                            <div class="news-card__in">
+                                <small class="news-card__time">17:30</small>
+                                <strong class="news-card__title">Инсайдер предсказывает три новых сенсора камеры для флагмана Sony Xperia 1 V </strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-aside">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news2.jpg" alt="Смартфон начального уровня Vivo Y02 «засветился» на сайте компании">
+                            <div class="news-card__in">
+                                <small class="news-card__time">16:30</small>
+                                <strong class="news-card__title">Смартфон начального уровня Vivo Y02 «засветился» на сайте компании </strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-aside">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news3.jpg" alt="Смарт-телевизоры Honor Smart Screen X3 поступили в продажу в Китае; цена – от 295 долларов">
+                            <div class="news-card__in">
+                                <small class="news-card__time">15:30</small>
+                                <strong class="news-card__title">Смарт-телевизоры Honor Smart Screen X3 поступили в продажу в Китае; цена – от 295 долларов </strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-aside">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news4.jpg" alt="Смартфоны Motorola Razr 2022 и Moto X30 Pro получили сертификаты HDR10+">
+                            <div class="news-card__in">
+                                <small class="news-card__time">14:30</small>
+                                <strong class="news-card__title">Смартфоны Motorola Razr 2022 и Moto X30 Pro получили сертификаты HDR10+</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-aside">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news5.jpg" alt="Lenovo выпустила оригинальный планшет-хамелеон Legion Y700 Ultimate Edition">
+                            <div class="news-card__in">
+                                <small class="news-card__time">13:30</small>
+                                <strong class="news-card__title">Lenovo выпустила оригинальный планшет-хамелеон Legion Y700 Ultimate Edition</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-footer">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news6.jpg" alt="Показаны новые цвета грядущих смарт-часов линейки Samsung Galaxy Watch5">
+                            <div class="news-card__in">
+                                <small class="news-card__time">12:30</small>
+                                <strong class="news-card__title">Показаны новые цвета грядущих смарт-часов линейки Samsung Galaxy Watch5</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-footer">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news7.jpg" alt="Возвращение легендарного медиаплеера Winamp: более 30 новых функций и">
+                            <div class="news-card__in">
+                                <small class="news-card__time">11:30</small>
+                                <strong class="news-card__title">Возвращение легендарного медиаплеера Winamp: более 30 новых функций и</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-footer">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news8.png" alt="«Утечка» основных характеристик планшета Lenovo Xiaoxin Pad Pro 2022">
+                            <div class="news-card__in">
+                                <small class="news-card__time">10:15</small>
+                                <strong class="news-card__title">«Утечка» основных характеристик планшета Lenovo Xiaoxin Pad Pro 2022</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-footer">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news9.jpg" alt="Флагманский смартфон OnePlus 10RT замечен в бенчмаркинге Geekbench">
+                            <div class="news-card__in">
+                                <small class="news-card__time">09:15</small>
+                                <strong class="news-card__title">Флагманский смартфон OnePlus 10RT замечен в бенчмаркинге Geekbench</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="news-feed__item news-feed__item-footer">
+                        <a href="#" class="news-feed__card">
+                            <img src="img/news/news10.jpg" alt="Состоялся мировой дебют компактного флагманского смартфона Asus Zenfone 9">
+                            <div class="news-card__in">
+                                <small class="news-card__time">29.07</small>
+                                <strong class="news-card__title">Состоялся мировой дебют компактного флагманского смартфона Asus Zenfone 9</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section class="main__new-products new-products">
+                <h2 class="new-products-feed__title">
+                    <a href="#" class="main__link">Новинки</a>
+                </h2>
+                <div class="new-products__view">
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM5922CW</a>
+                                <span class="new-products__price">от 982,56 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM5922CW.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM0801C</a>
+                                <span class="new-products__price">от 70,62 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM0801C.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">POTATO P3330-3</a>
+                                <span class="new-products__price">от 851,47 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/POTATO P3330-3.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM7007C</a>
+                                <span class="new-products__price">от 886,52 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM7007C.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM8809C</a>
+                                <span class="new-products__price">от 269,67 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM8809C.jpeg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM8810C</a>
+                                <span class="new-products__price">от 369,71 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM8810C.jpeg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Valvex Cubus 2447130</a>
+                                <span class="new-products__price">от 988,00 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Valvex Cubus 2447130.jpeg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Valvex Diya Black 2447120</a>
+                                <span class="new-products__price">от 950,00 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Valvex Diya Black 2447120.jpeg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM5662C</a>
+                                <span class="new-products__price">от 1 378,00 б.р</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM5662C.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM7002BL</a>
+                                <span class="new-products__price">от 1 344,00 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM7002BL.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">Lemark LM0462C</a>
+                                <span class="new-products__price">от 949,00 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/Lemark LM0462C.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="new-products__item">
+                        <span class="new-products__head">
+                            <a href="#" class="new-products__category">Душевые системы</a>
+                        </span>
+                        <div class="new-products__main">
+                            <div class="new-products__info">
+                                <a href="#" class="new-products__name">POTATO P3565</a>
+                                <span class="new-products__price">от 148,00 б.р.</span>
+                            </div>
+                            <a href="#" class="new-products__link-img">
+                                <img src="img/products/POTATO P3565.jpg" class="new-products__img"></img>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="main__reviews reviews">
+                <h2 class="reviews-feed__title">
+                    <a href="#" class="main__link">Обзоры</a>
+                </h2>
+                <div class="reviews__view">
+                    <div class="reviews__item">
+                        <a href="#" class="news-feed__card news-card">
+                            <img src="img/reviews/review1.jpg" alt="Как выбрать электрорубанок?">
+                            <div class="news-card__in">
+                                <strong class="news-card__title">Как выбрать электрорубанок?</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="reviews__item">
+                        <a href="#" class="news-feed__card news-card">
+                            <img src="img/reviews/review2.jpg" alt="Как выбрать электрорубанок?">
+                            <div class="news-card__in">
+                                <strong class="news-card__title">Как выбрать автомобильный аккумулятор?</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="reviews__item">
+                        <a href="#" class="news-feed__card news-card">
+                            <img src="img/reviews/review3.jpg" alt="Как выбрать электрорубанок?">
+                            <div class="news-card__in">
+                                <strong class="news-card__title">Как выбрать автомобильную антенну?</strong>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="reviews__item">
+                        <a href="#" class="news-feed__card news-card">
+                            <img src="img/reviews/review4.jpg" alt="Как выбрать электрорубанок?">
+                            <div class="news-card__in">
+                                <strong class="news-card__title">Как выбрать камеру заднего вида?</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__flex">
+                    <div class="footer__row head">
+                        <div class="footer__lists">
+                            <div class="footer__column footer__column_1">
+                                <div class="footer__title">Информация</div>
+                                <ul class="footer__list">
+                                    <li><a href="">Покупателям</a></li>
+                                    <li><a href="">Продавцам</a></li>
+                                    <li><a href="">Карта сайта</a></li>
+                                    <li><a href="">Производители</a></li>
+                                    <li><a href="">Регистрация магазина</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer__column">
+                                <div class="footer__title">Популярные категории</div>
+                                <ul class="footer__list">
+                                    <li><a href="">Ноутбуки</a></li>
+                                    <li><a href="">Вертикальные пылесосы</a></li>
+                                    <li><a href="">Водонагреватели</a></li>
+                                    <li><a href="">Велосипеды</a></li>
+                                    <li><a href="">Самокаты</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer__column footer__column_3">
+                                <div class="footer__title">Новые категории</div>
+                                <ul class="footer__list">
+                                    <li><a href="">Пьедесталы для умывальников</a></li>
+                                    <li><a href="">Садовая мебель</a></li>
+                                    <li><a href="">Игрушечные машинки и техника</a></li>
+                                    <li><a href="">Термопринтеры</a></li>
+                                    <li><a href="">Кофе</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer__buttons buttons">
+                            <div class="buttons__column">
+                                <div class="buttons__row">
+                                    <a href="" class="vk">VK</a>
+                                    <a href="" class="twitter">twitter</a>
+                                    <a href="" class="mobile-version">Мобильная версия</a>
+                                </div>
+                                <div class="buttons__text">© 2007-2022 "Первый Каталог" Беларусь, Минск</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__row bottom">
+                        <ul class="bottom__list">
+                            <li><a href="">О нас</a></li>
+                            <li><a href="">Реклама</a></li>
+                            <li><a href="">Пользовательское соглашение</a></li>
+                            <li><a href="">Копирайт и авторские права </a></li>
+                            <li><a href="">Обратная связь</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="popup__log-in" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="" class="popup__close close-popup"><i class="gg-close"></i></a>
+                <div class="popup__title">Авторизация</div>
+                <form class="popup__form" method="post">
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="text" name="log-in--mail-line" placeholder="E-Mail">
+                    </label>
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="password" name="log-in--password-line" placeholder="Пароль">
+                    </label>
+                    <div class="popup__details">
+                        <div class="checkbox--container">
+                            <input id="rememberMe" type="checkbox" name="rememberMe" value="rememberMe" checked>
+                            <label for="#rememberMe">Запомнить меня</label>
+                        </div>
+                        <a href="#">Востановить пароль?</a>
+                    </div>
+                    <button class="popup__button" type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup__sign-up" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="" class="popup__close close-popup"><i class="gg-close"></i></a>
+                <div class="popup__title">Регистрация</div>
+                <form class="popup__form" method="post">
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="text" name="sign-up--username-line" placeholder="Ваше имя">
+                    </label>
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="text" name="sign-up--mail-line" placeholder="E-Mail">
+                    </label>
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="password" name="sign-up--password-line" placeholder="Пароль">
+                    </label>
+                    <label class="popup-text-field__label">
+                        <input class="popup-text-field__input" type="password" name="sign-up--password-line--again" placeholder="Пароль ещё раз">
+                    </label>
+                    <div class="popup__details">
+                        <div class="checkbox--container">
+                            <input id="acceptWithConditions" type="checkbox" name="rememberMe" value="rememberMe" checked>
+                            <label for="#acceptWithConditions"><a href="#">Согласен с пользовательским соглашением и обработкой персональных данных</a></label>
+                        </div>
+                    </div>
+                    <button class="popup__button" type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/header.js"></script>
+    <script src="js/popups.js"></script>
+    <script src="js/heightByWidth.js"></script>
+</body>
+</html>

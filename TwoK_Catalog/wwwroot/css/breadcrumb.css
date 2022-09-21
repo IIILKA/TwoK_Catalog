@@ -1,0 +1,31 @@
+/* Стиль списка */
+ul.breadcrumb {
+    margin-bottom: 18px;
+    padding-right: 180px;
+    list-style: none;
+    background-color: transparent;
+}
+
+/* Отображение элементов списка бок о бок */
+ul.breadcrumb li {
+    display: inline;
+    font-size: .875rem;
+}
+
+/* Добавить символ косой черты (/) перед/за каждым элементом списка */
+ul.breadcrumb li+li:before {
+    padding: 10px;
+    color: #9e9e9e;
+    content: "/\00a0";
+}
+
+/* Добавить цвет для всех ссылок внутри списка */
+ul.breadcrumb li a {
+    color: #06c;
+    text-decoration: underline;
+}
+
+/* Добавить цвет на наведении курсора мыши */
+ul.breadcrumb li a:hover {
+    color: #09f;
+}

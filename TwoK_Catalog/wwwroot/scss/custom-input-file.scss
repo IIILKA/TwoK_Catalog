@@ -1,0 +1,52 @@
+.field__wrapper {
+    width: 100%;
+    position: relative;
+    margin-bottom: .75rem;
+    text-align: center;
+}
+
+.field__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.field__file-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.field__file-fake {
+    height: 2rem;
+    width: calc(100% - 130px);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border: 2px solid #c5d5e2;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+    font-size: 1rem;
+}
+
+.field__file-button {
+    width: 130px;
+    height: 2rem;
+    //background: #1bbc9b;
+    background-color: #f90;
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f90;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+
+    &:hover {
+        border-color: rgb(179, 109, 5);;
+    }
+}
