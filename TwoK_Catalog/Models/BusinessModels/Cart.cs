@@ -1,4 +1,8 @@
-﻿namespace TwoK_Catalog.Models.BusinessModels
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
+using TwoK_Catalog.Infrastructure;
+
+namespace TwoK_Catalog.Models.BusinessModels
 {
     public class Cart
     {
@@ -10,8 +14,19 @@
             get { return cartItems; }
             set { cartItems = (List<CartItem>)value; }
         }
+        [NotMapped]
+        private ICartRepository repository;
 
-        public virtual void AddItem(Product product, int quantity = 1)
+        public static Cart GetCart(IServiceProvider services)
+        {
+            string userId = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ICartRepository repository = services.GetRequiredService<ICartRepository>();
+            Cart cart = repository.GetCart(userId) ?? new Cart() { UserId = userId };
+            cart.repository = repository;
+            return cart;
+        }
+
+        public void AddItem(Product product, int quantity = 1)
         {
             CartItem cartItem = cartItems.Where(p => p.Product.Id == product.Id).FirstOrDefault();
 
@@ -23,9 +38,11 @@
             {
                 cartItem.Quantity += quantity;
             }
+
+            repository.SaveCart(this);
         }
 
-        public virtual void RemoveItem(Product product, int quantity = 1)
+        public void RemoveItem(Product product, int quantity = 1)
         {
             CartItem cartItem = cartItems.Where(p => p.Product.Id == product.Id).FirstOrDefault();
 
@@ -40,15 +57,17 @@
                     cartItems.RemoveAll(i => i.Product.Id == product.Id);
                 }
             }
+
+            repository.SaveCart(this);
         }
 
-        public virtual void UpdateCart()
+        public decimal ComputeTotalValue() => cartItems.Sum(i => i.Product.Price * i.Quantity);
+
+        public void Clear()
         {
-
+            cartItems.Clear();
+            repository.SaveCart(this);
         }
-        public virtual decimal ComputeTotalValue() => cartItems.Sum(i => i.Product.Price * i.Quantity);
-
-        public virtual void Clear() => cartItems.Clear();
     }
 
     public class CartItem

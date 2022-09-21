@@ -48,9 +48,6 @@ namespace TwoK_Catalog.Controllers
                     await userManager.AddToRoleAsync(user, "User");
                     //Установка куки
                     await signInManager.SignInAsync(user, false);
-                    //Создаём корзину для пользователя и записываем её в сессию
-                    SessionCart cart = new SessionCart() { UserId = userManager.GetUserId(signInManager.Context.User) };
-                    cart.UpdateCart();
                     return Redirect(model.ReturnUrl);
                 }
             }
@@ -102,17 +99,6 @@ namespace TwoK_Catalog.Controllers
                     if (result.Succeeded)
                     {
                         model.RemoveSucsessLogInViewModel();
-                        //
-                        var cart = cartRepository.GetCart(user.Id);
-                        if(cart == null)
-                        {
-                            cart = new SessionCart() { UserId = user.Id, Session = context.Session };
-                        }
-                        else
-                        {
-                            cart = new SessionCart() { Id = cart.Id, CartItems = cart.CartItems, UserId=user.Id, Session = context.Session };
-                        }
-                        cart.UpdateCart();
                         // проверяем, принадлежит ли URL приложению
                         if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
                         {
@@ -137,10 +123,6 @@ namespace TwoK_Catalog.Controllers
 
         public async Task<IActionResult> LogOut(string returnUrl)
         {
-            if (User.IsInRole("User"))
-            {
-               cartRepository.SaveCart(context.Session.GetJson<Cart>("Cart"));
-            }
             // удаляем аутентификационные куки
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);

@@ -30,7 +30,7 @@ builder.Services.AddTransient<IProductRepository, EFProductRepository>();
 builder.Services.AddTransient<IOrderRepository, EFOrderRepository>();
 builder.Services.AddTransient<ICartRepository, EFCartRepository>();
 builder.Services.AddTransient<IUserRepository, EFUsersRepository>();
-builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddScoped<Cart>(sp => Cart.GetCart(sp));
 builder.Services.AddScoped<SessionRegisterViewModel>(sp => (SessionRegisterViewModel)SessionRegisterViewModel.GetRegisterViewModel(sp));
 builder.Services.AddScoped<SessionLogInViewModel>(sp => (SessionLogInViewModel)SessionLogInViewModel.GetLogInViewModel(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

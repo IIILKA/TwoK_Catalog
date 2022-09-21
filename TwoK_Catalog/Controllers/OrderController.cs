@@ -50,9 +50,9 @@ namespace TwoK_Catalog.Controllers
         [AllowAnonymous]
         public IActionResult Completed()
         {
-            cart.Clear();
             if (User.Identity.IsAuthenticated)
             {
+                cart.Clear();
                 return View();
             }
             else
