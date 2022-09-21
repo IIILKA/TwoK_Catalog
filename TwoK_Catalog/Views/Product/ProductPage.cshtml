@@ -1,0 +1,47 @@
+﻿@model Product
+
+<div class="product-page-main">
+    <ul class="breadcrumb">
+        <li><a href="#">Телефония и связь</a></li>
+        <li><a href="#">@Model.Company</a></li>
+        <li>@Model.GetTitle()</li>
+    </ul>
+    <h1 class="main__title">Смартфон @Model.GetTitle()</h1>
+    <div class="product">
+        <div class="product__main">
+            <div class="products__picture-and-checkbox">
+                <div class="products__picture">
+                    <a href="#" class="products__img-ref">
+                        <img class="products__img" src="@Model.ImagePath" alt="">
+                    </a>
+                </div>
+                <div class="products__checkbox">
+                    <input class="custom-checkbox" type="checkbox" name="@Model.GetTitle()" id="@Model.GetTitle()">
+                    <label for="@Model.GetTitle()">Сравнить</label>
+                </div>
+            </div>
+            <div class="products__main-info">
+                <div class="products__buttons">
+                    <div class="price__container">
+                        <span class="products__price">@Model.Price б.р.</span>
+                    </div>
+                    <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
+                        <input type="hidden" name="productId" asp-for="@Model.Id"/>
+                        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                        <button type="submit" class="products__putInBasket"><span>Положить в корзину</span></button>
+                     </form>
+                </div>
+                <div class="products__description">
+                    <span><b>Экран: </b>@Model.GetDescriptionValue("Экран")</span>
+                    <span><b>Система: </b>@Model.GetDescriptionValue("Система")</span>
+                    <span><b>Память: </b>@Model.GetDescriptionValue("Память")</span>
+                    <span><b>Камера: </b>@Model.GetDescriptionValue("Камера")</span>
+                    <span><b>Связь: </b>@Model.GetDescriptionValue("Связь")</span>
+                    <span><b>Конструкция: </b>@Model.GetDescriptionValue("Конструкция")</span>
+                </div>
+                <div class="products__comment-link">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

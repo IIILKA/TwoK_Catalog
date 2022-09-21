@@ -3,7 +3,7 @@
 <div class="products__item">
     <div class="products__picture-and-checkbox">
         <div class="products__picture">
-            <a class="products__img-ref">
+            <a class="products__img-ref" asp-action="ProductPage" asp-route-productId="@Model.Id">
                 <img class="products__img" src="@Model.ImagePath" alt="">
             </a>
         </div>
@@ -14,7 +14,9 @@
     </div>
     <div class="products__main-info">
         <div class="products__title">
-            <span>@Model.GetTitle()</span>
+            <a asp-action="ProductPage" asp-route-productId="@Model.Id">
+                <span>@Model.GetTitle()</span>
+            </a>
         </div>
         <div class="products__description-and-buttons">
             <div class="products__description">
@@ -27,7 +29,7 @@
             </div>
             <div class="products__buttons">
                 <div class="price__container">
-                    <a href="#" class="products__price">@Model.Price</a><span>б.р.</span>
+                    <a class="products__price" asp-action="ProductPage" asp-route-productId="@Model.Id">@Model.Price</a><span>б.р.</span>
                 </div>
                 <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
                     <input type="hidden" name="productId" asp-for="@Model.Id"/>

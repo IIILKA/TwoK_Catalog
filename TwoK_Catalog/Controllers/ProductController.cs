@@ -18,16 +18,33 @@ namespace TwoK_Catalog.Controllers
         }
 
         public ViewResult List(int productPage = 1)
-            => View(new ProductsListViewModel {
+        {
+            return View(new ProductsListViewModel
+            {
                 Products = repository.Products
                     .OrderBy(p => p.Id)
                     .Skip((productPage - 1) * PageSize)
                     .Take(PageSize),
-                PageInfo = new PageInfo {
+                PageInfo = new PageInfo
+                {
                     CurrentPage = productPage,
                     ItemsPerPage = PageSize,
                     TotalItems = repository.Products.Count()
                 }
             });
+        }
+
+        public IActionResult ProductPage(int productId)
+        {
+            var product = repository.Products.FirstOrDefault(p => p.Id == productId);
+            if(product != null)
+            {
+                return View(product);
+            }
+            else
+            {
+                return RedirectToAction(nameof(List));
+            }
+        }
     }
 }
