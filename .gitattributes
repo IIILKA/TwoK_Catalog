@@ -1,7 +1,7 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-*/wwwroot/* linguist-vendored
+*/wwwroot/** linguist-vendored
 
 ###############################################################################
 # Set default behavior for command prompt diff.
