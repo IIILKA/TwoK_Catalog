@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TwoK_Catalog.Infrastructure;
 using TwoK_Catalog.Models;
 using TwoK_Catalog.Models.BusinessModels;
@@ -32,7 +33,9 @@ namespace TwoK_Catalog.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                Product product = productRepository.Products.FirstOrDefault(p => p.Id == productId);
+                Product product = productRepository.Products
+                    .Include(p => p.Company)
+                    .FirstOrDefault(p => p.Id == productId);
                 if (product != null)
                 {
                     cart.AddItem(product);
@@ -48,7 +51,9 @@ namespace TwoK_Catalog.Controllers
 
         public RedirectToActionResult RemoveFromCart(int productId, string returnUrl, int quantity = 1)
         {
-            Product product = productRepository.Products.FirstOrDefault(p => p.Id == productId);
+            Product product = productRepository.Products
+                .Include(p => p.Company)
+                .FirstOrDefault(p => p.Id == productId);
             if (product != null)
             {
                 cart.RemoveItem(product);

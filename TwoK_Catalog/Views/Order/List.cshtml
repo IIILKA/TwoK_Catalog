@@ -31,12 +31,12 @@
                     </tr>
                 @foreach (var cartItem in order.CartItems)
                 {
-                            <tr>
-                                <td colspan="2"></td>
-                                <td>@cartItem.Product.GetTitle()</td>
-                                <td class="col-quantity">@cartItem.Quantity</td>
-                                <td class="col-space"></td>
-                            </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>@cartItem.Product.GetTitle()</td>
+                        <td class="col-quantity">@cartItem.Quantity</td>
+                        <td class="col-space"></td>
+                    </tr>
                 }
                 </tbody>
         }

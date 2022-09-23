@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TwoK_Catalog.Models.BusinessModels;
@@ -15,7 +16,9 @@ namespace TwoK_Catalog.Models
             this.appEnvironment = appEnvironment;
         }
 
-        public IQueryable<Product> Products => context.Products;
+        public IQueryable<Product> Products => context.Products
+            .Include(p => p.Company)
+            .Include(p => p.SubCategory);
 
         public void SaveProduct(Product product)
         {
@@ -23,7 +26,7 @@ namespace TwoK_Catalog.Models
             {
                 if (product.FormFile != null)
                 {
-                    string path = $"/img/products/{product.Category.ToLower()}s/{product.Company.ToLower()}/" + product.FormFile.FileName;
+                    string path = $"/img/products/{product.SubCategory.Name_UK.ToLower()}s/{product.Company.Name.ToLower()}/" + product.FormFile.FileName;
                     product.ImagePath = path;
                     using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
                     {
@@ -42,11 +45,16 @@ namespace TwoK_Catalog.Models
                     dbProduct.Equipment = product.Equipment;
                     dbProduct.Description = product.Description;
                     dbProduct.Price = product.Price;
-                    dbProduct.Category = product.Category;
+                    dbProduct.SubCategory = product.SubCategory;
                     dbProduct.Quaintity = product.Quaintity;
                     if(product.FormFile != null)
                     {
-                        string path = $"/img/products/{dbProduct.Category.ToLower()}s/{dbProduct.Company.ToLower()}/" + product.FormFile.FileName;
+                        string path = $"/img/products/{dbProduct.SubCategory.Name_UK.ToLower()}s/{dbProduct.Company.Name.ToLower()}/"; //+ product.FormFile.FileName;
+                        if (!Directory.Exists(appEnvironment.WebRootPath + path))
+                        {
+                            Directory.CreateDirectory(appEnvironment.WebRootPath + path);
+                        }
+                        path += product.FormFile.FileName;
                         dbProduct.ImagePath = path;
                         using(var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
                         {

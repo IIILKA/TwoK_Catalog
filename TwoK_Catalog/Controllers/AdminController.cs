@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TwoK_Catalog.Models;
 using TwoK_Catalog.Models.BusinessModels;
 using TwoK_Catalog.Models.BusinessModels.Enums;
@@ -14,16 +15,24 @@ namespace TwoK_Catalog.Controllers
     {
         private IProductRepository productRepository;
         private IUserRepository userRepository;
-        public AdminController(IProductRepository productRepository, IUserRepository userRepository)
+        private ICategoriesAndCompanysInfoRepository categoriesAndCompanysInfoRepository;
+        public AdminController(IProductRepository productRepository, IUserRepository userRepository, ICategoriesAndCompanysInfoRepository categoriesAndCompanysInfoRepository)
         {
             this.productRepository = productRepository;
             this.userRepository = userRepository;
+            this.categoriesAndCompanysInfoRepository = categoriesAndCompanysInfoRepository;
         }
 
-        public ViewResult CRUDproducts() => View(productRepository.Products);
+        public ViewResult CRUDproducts() => 
+            View(productRepository.Products
+                .Include(p => p.Company)
+                .Include(p => p.SubCategory));
 
         public ViewResult Edit(int productId) => 
-            View(productRepository.Products.FirstOrDefault(p => p.Id == productId));
+            View(productRepository.Products
+                .Include(p => p.Company)
+                .Include(p => p.SubCategory)
+                .FirstOrDefault(p => p.Id == productId));
 
         [HttpPost]
         public IActionResult Edit(Product product)
@@ -34,6 +43,8 @@ namespace TwoK_Catalog.Controllers
             ModelState["ImagePath"].Errors.Clear();
             if (ModelState.IsValid)
             {
+                product.Company = categoriesAndCompanysInfoRepository.Companys.FirstOrDefault(c => c.Id == product.Company.Id);
+                product.SubCategory = categoriesAndCompanysInfoRepository.SubCategories.FirstOrDefault(sc => sc.Id == product.SubCategory.Id);
                 productRepository.SaveProduct(product);
                 TempData["message"] = product.Id == 0 ? $"{product.GetTitle()} был добавлен" : $"{product.GetTitle()} был изменён";
                 return RedirectToAction("CRUDproducts");

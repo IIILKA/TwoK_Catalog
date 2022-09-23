@@ -4,6 +4,7 @@ using TwoK_Catalog.Models;
 using TwoK_Catalog.Models.ViewModels;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace TwoK_Catalog.Controllers
 {
@@ -22,6 +23,8 @@ namespace TwoK_Catalog.Controllers
             return View(new ProductsListViewModel
             {
                 Products = repository.Products
+                    .Include(p => p.Company)
+                    .Include(p => p.SubCategory)
                     .OrderBy(p => p.Id)
                     .Skip((productPage - 1) * PageSize)
                     .Take(PageSize),
@@ -36,7 +39,10 @@ namespace TwoK_Catalog.Controllers
 
         public IActionResult ProductPage(int productId)
         {
-            var product = repository.Products.FirstOrDefault(p => p.Id == productId);
+            var product = repository.Products
+                .Include(p => p.Company)
+                .Include(p => p.SubCategory)
+                .FirstOrDefault(p => p.Id == productId);
             if(product != null)
             {
                 return View(product);

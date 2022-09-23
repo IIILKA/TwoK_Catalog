@@ -32,7 +32,9 @@ namespace TwoK_Catalog.Tests
 
             Mock<IUserRepository> usersMock = new Mock<IUserRepository>();
 
-            AdminController target = new AdminController(mock.Object, usersMock.Object);
+            Mock<ICategoriesAndCompanysInfoRepository> categoriesAndCompanysInfoRepositoryMock = new Mock<ICategoriesAndCompanysInfoRepository>();
+
+            AdminController target = new AdminController(mock.Object, usersMock.Object, categoriesAndCompanysInfoRepositoryMock.Object);
 
             //A2
             Product p1 = GetViewModel<Product>(target.Edit(1));
@@ -58,7 +60,9 @@ namespace TwoK_Catalog.Tests
 
             Mock<IUserRepository> usersMock = new Mock<IUserRepository>();
 
-            AdminController target = new AdminController(mock.Object, usersMock.Object);
+            Mock<ICategoriesAndCompanysInfoRepository> categoriesAndCompanysInfoRepositoryMock = new Mock<ICategoriesAndCompanysInfoRepository>();
+
+            AdminController target = new AdminController(mock.Object, usersMock.Object, categoriesAndCompanysInfoRepositoryMock.Object);
 
             //A2
             Product p4 = GetViewModel<Product>(target.Edit(4));
@@ -79,8 +83,9 @@ namespace TwoK_Catalog.Tests
             Mock<IUserRepository> usersMock = new Mock<IUserRepository>();
 
             //Mock<IWebHostEnvironment> appEnvironment = new Mock<IWebHostEnvironment>();
+            Mock<ICategoriesAndCompanysInfoRepository> categoriesAndCompanysInfoRepositoryMock = new Mock<ICategoriesAndCompanysInfoRepository>();
 
-            AdminController target = new AdminController(mock.Object, usersMock.Object) { TempData = tempData.Object };
+            AdminController target = new AdminController(mock.Object, usersMock.Object, categoriesAndCompanysInfoRepositoryMock.Object) { TempData = tempData.Object };
             target.ModelState.AddModelError("FormFile", "FormFileError");
             target.ModelState.AddModelError("ImagePath", "ImagePathError");
 
@@ -105,7 +110,9 @@ namespace TwoK_Catalog.Tests
 
             //Mock<IWebHostEnvironment> appEnvironment = new Mock<IWebHostEnvironment>();
 
-            AdminController target = new AdminController(mock.Object, usersMock.Object);
+            Mock<ICategoriesAndCompanysInfoRepository> categoriesAndCompanysInfoRepositoryMock = new Mock<ICategoriesAndCompanysInfoRepository>();
+
+            AdminController target = new AdminController(mock.Object, usersMock.Object, categoriesAndCompanysInfoRepositoryMock.Object);
             target.ModelState.AddModelError("FormFile", "FormFileError");
             target.ModelState.AddModelError("ImagePath", "ImagePathError");
 
@@ -137,7 +144,9 @@ namespace TwoK_Catalog.Tests
 
             Mock<IUserRepository> usersMock = new Mock<IUserRepository>();
 
-            AdminController target = new AdminController(mock.Object, usersMock.Object);
+            Mock<ICategoriesAndCompanysInfoRepository> categoriesAndCompanysInfoRepositoryMock = new Mock<ICategoriesAndCompanysInfoRepository>();
+
+            AdminController target = new AdminController(mock.Object, usersMock.Object, categoriesAndCompanysInfoRepositoryMock.Object);
 
             //A2
             target.Delete(p2.Id);

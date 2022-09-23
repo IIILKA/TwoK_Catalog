@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Emit;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TwoK_Catalog.Models.BusinessModels
 {
@@ -12,8 +13,7 @@ namespace TwoK_Catalog.Models.BusinessModels
         public int Id { get; set; }
         [Required(ErrorMessage = "Отсутсвует имя продукта")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Отсутсвует название компании-производителя")]
-        public string Company { get; set; }
+        public Company Company { get; set; }
         [Required(AllowEmptyStrings = true)]
         public string Equipment { get; set; }
         [Required(AllowEmptyStrings = true)]
@@ -21,7 +21,7 @@ namespace TwoK_Catalog.Models.BusinessModels
         [Required(ErrorMessage = "Отсутсвует цена продукта")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Недопустимое значение")]
         public decimal Price { get; set; }
-        public string Category { get; set; }
+        public SubCategory SubCategory { get; set; }
         [Required(AllowEmptyStrings = true)]
         public string ImagePath { get; set; }
         [Required(AllowEmptyStrings = true)]
@@ -55,7 +55,7 @@ namespace TwoK_Catalog.Models.BusinessModels
             descriptionValues.Add("Конструкция", parts[5].Replace("Конструкция: ", ""));
         }
 
-        public string GetTitle() => $"{Company} {Name} {Equipment}";
+        public string GetTitle() => $"{Company.Name} {Name} {Equipment}";
 
         public string GetDescriptionValue(string key) => DescriptionValues[key];
     }

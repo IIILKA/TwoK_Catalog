@@ -30,9 +30,11 @@ builder.Services.AddTransient<IProductRepository, EFProductRepository>();
 builder.Services.AddTransient<IOrderRepository, EFOrderRepository>();
 builder.Services.AddTransient<ICartRepository, EFCartRepository>();
 builder.Services.AddTransient<IUserRepository, EFUsersRepository>();
+builder.Services.AddTransient<ICategoriesAndCompanysInfoRepository, EFCategoriesAndCompanysInfoRepository>();
 builder.Services.AddScoped<Cart>(sp => Cart.GetCart(sp));
 builder.Services.AddScoped<SessionRegisterViewModel>(sp => (SessionRegisterViewModel)SessionRegisterViewModel.GetRegisterViewModel(sp));
 builder.Services.AddScoped<SessionLogInViewModel>(sp => (SessionLogInViewModel)SessionLogInViewModel.GetLogInViewModel(sp));
+builder.Services.AddTransient<CategoriesAndCompanysInfoViewModel>(sp => CategoriesAndCompanysInfoViewModel.GetCategoriesAndCompanysInfoViewModel(sp));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddMvc(mvcOptions =>
 {
@@ -42,9 +44,11 @@ builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 
 var app = builder.Build();
+await ApplicationIdentityDbContext.CreateDefaultRoles(app, app.Configuration);
+await ApplicationIdentityDbContext.CreateSeniorAdminAccount(app, app.Configuration);
+await ApplicationDbContext.CreateDefaultCopanys(app);
+await ApplicationDbContext.CreateDefaultCategories(app);
 SeedData.EnsurePopulated(app);
-ApplicationIdentityDbContext.CreateDefaultRoles(app, app.Configuration);
-ApplicationIdentityDbContext.CreateSeniorAdminAccount(app, app.Configuration);
 
 app.UseDeveloperExceptionPage();
 app.UseStatusCodePages();

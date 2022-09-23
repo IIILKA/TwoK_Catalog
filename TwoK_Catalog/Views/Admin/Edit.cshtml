@@ -1,4 +1,5 @@
-﻿@model Product
+﻿@inject CategoriesAndCompanysInfoViewModel categoriesAndCompanysInfo
+@model Product
 
 @{
     ViewBag.Title = Model.Id == 0 ? "Конструктор товара" : "Редактирование товара";
@@ -15,10 +16,14 @@
         </label>
     </div>
     <div class="form-item">
-        <label>
-            Компания-производитель:
-            <div class="invalid-form-value"><span asp-validation-for="Company"></span></div>
-            <input asp-for="Company" type="text" placeholder="Компания-производитель:">
+        <label class="triangle-for-select select-container">
+            Компания производитель:
+            <select asp-for="Company.Id" class="select">
+                @foreach (var sc in categoriesAndCompanysInfo.Companys)
+                {
+                    <option value="@sc.Id">@sc.Name</option>
+                }
+            </select>
         </label>
     </div>
     <div class="form-item">
@@ -60,7 +65,12 @@
     <div class="form-item">
         <label class="triangle-for-select select-container">
             Категория:
-            <select asp-for="Category" asp-items="@new SelectList(Enum.GetNames(typeof(Categories)))" class="select"></select>
+            <select asp-for="SubCategory.Id" class="select">
+                @foreach (var sc in categoriesAndCompanysInfo.SubCategories)
+                {
+                    <option value="@sc.Id">@sc.Name_RU</option>
+                }
+            </select>
         </label>
     </div>
     <div class="buttons-container">

@@ -730,19 +730,12 @@ body.lock {
 
 .catalog__item {
   position: relative;
-  -ms-flex-preferred-size: 33.3333%;
-      flex-basis: 33.3333%;
-  max-width: 33.3333%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  max-width: 50%;
   padding-left: 3.75rem;
   padding-right: 1.125rem;
   margin-bottom: 1.125rem;
-}
-@media (max-width: 1049px) {
-  .catalog__item {
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
-    max-width: 50%;
-  }
 }
 .catalog__item .catalog__title {
   position: relative;

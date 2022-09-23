@@ -16,6 +16,7 @@ namespace TwoK_Catalog.Models
             Cart? cart = context.Carts
                 .Include(c => c.CartItems)
                 .ThenInclude(ci => ci.Product)
+                .ThenInclude(p => p.Company)
                 .FirstOrDefault(c => c.UserId == userId);
             return cart;
         }
@@ -27,6 +28,7 @@ namespace TwoK_Catalog.Models
                 Cart? dbCart = context.Carts
                     .Include(c => c.CartItems)
                     .ThenInclude(ci => ci.Product)
+                    .ThenInclude(p => p.Company)
                     .FirstOrDefault(c => c.Id == cart.Id);
                 if(dbCart != null)
                 {

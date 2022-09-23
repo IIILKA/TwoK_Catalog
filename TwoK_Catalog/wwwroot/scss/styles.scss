@@ -668,13 +668,13 @@ body {
 
 .catalog__item{
     position: relative;
-    flex-basis: 33.3333%;//@media(max-width: 1099px): 50%
-    max-width: 33.3333%;//@media(max-width: 1099px): 50%
+    flex-basis: 50%;//@media(max-width: 1099px): 50%
+    max-width: 50%;//@media(max-width: 1099px): 50%
 
-    @media(max-width: 1049px){
-        flex-basis: 50%;
-        max-width: 50%;
-    }
+    // @media(max-width: 1049px){
+    //     flex-basis: 100%;
+    //     max-width: 100%;
+    // }
 
     padding-left: 3.75rem;
     padding-right: 1.125rem;

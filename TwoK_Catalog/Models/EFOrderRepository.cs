@@ -13,7 +13,8 @@ namespace TwoK_Catalog.Models
 
         public IQueryable<Order> Orders => context.Orders
             .Include(o => o.CartItems)
-            .ThenInclude(ci => ci.Product);
+            .ThenInclude(ci => ci.Product)
+            .ThenInclude(p => p.Company);
 
         public void SaveOrder(Order order)
         {
