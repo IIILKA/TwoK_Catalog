@@ -26,7 +26,12 @@ namespace TwoK_Catalog.Models
             {
                 if (product.FormFile != null)
                 {
-                    string path = $"/img/products/{product.SubCategory.Name_UK.ToLower()}s/{product.Company.Name.ToLower()}/" + product.FormFile.FileName;
+                    string path = $"/img/products/{product.SubCategory.Name_UK.ToLower()}s/{product.Company.Name.ToLower()}/";
+                    if (!Directory.Exists(appEnvironment.WebRootPath + path))
+                    {
+                        Directory.CreateDirectory(appEnvironment.WebRootPath + path);
+                    }
+                    path += product.FormFile.FileName;
                     product.ImagePath = path;
                     using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
                     {
@@ -68,7 +73,9 @@ namespace TwoK_Catalog.Models
 
         public Product DeleteProduct(int productId)
         {
-            Product dbProduct = context.Products.FirstOrDefault(p => p.Id == productId);
+            Product dbProduct = context.Products
+                .Include(p => p.Company)
+                .FirstOrDefault(p => p.Id == productId);
             if( dbProduct != null)
             {
                 context.Products.Remove(dbProduct);

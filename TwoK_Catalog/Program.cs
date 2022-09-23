@@ -22,7 +22,7 @@ builder.Services.AddIdentity<User, IdentityRole>(opts =>
     opts.Password.RequireUppercase = false;
     opts.Password.RequireDigit = false;
     opts.User.RequireUniqueEmail = true;
-    opts.User.AllowedUserNameCharacters = ".@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿ1234567890";
+    opts.User.AllowedUserNameCharacters = ".@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅ¨ÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäå¸æçèéêëìíîïğñòóôõö÷øùúûüışÿ1234567890 ";
     opts.SignIn.RequireConfirmedPhoneNumber = false;
     opts.SignIn.RequireConfirmedEmail = false;
 }).AddEntityFrameworkStores<ApplicationIdentityDbContext>().AddDefaultTokenProviders();
