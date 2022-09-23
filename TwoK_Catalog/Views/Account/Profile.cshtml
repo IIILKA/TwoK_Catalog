@@ -2,6 +2,17 @@
 
 <div class="profile-main">
     <h2 class="user-name">@User.Identity.Name</h2>
+    @if (User.IsInRole("SeniorAdmin"))
+    {
+        <h3 class="user-role">Старший админ</h3>
+    }
+    else if (User.IsInRole("JuniorAdmin"))
+    {
+        <h3 class="user-role">Младший админ</h3>
+    }
+
+    @if(Model.Orders.Count > 0)
+    {
     <h2 class="orders-title">Ваши заказы</h2>
     <table class="orders__table">
         <thead>
@@ -10,34 +21,45 @@
             <th class="col-details-products">Детали</th>
             <th class="col-details-quantity"></th>
         </thead>
-        @foreach(var order in Model.Orders)
+        @foreach (var order in Model.Orders)
         {
-            <tbody>
+        <tbody>
             <tr class="col-title">
                 <td class="col-id">@order.Id</td>
-                @if(order.IsShipped)
+                @if (order.IsShipped)
                 {
-                    <td class="col-status" data-status="did-shiped">Выслано</td>
+                        <td class="col-status" data-status="did-shiped">Выслано</td>
                 }
                 else
                 {
-                    <td class="col-status" data-status="did-not-shiped">Не выслано</td>
+                        <td class="col-status" data-status="did-not-shiped">Не выслано</td>
                 }
                 <th class="col-product">Товар</th>
                 <th class="col-quantity">Количество</th>
             </tr>
-            @foreach(var cartItem in order.CartItems)
+            @foreach (var cartItem in order.CartItems)
             {
-                <tr>
-                    <td colspan="2"></td>
-                    <td class="col-product">@cartItem.Product.GetTitle()</td>
-                    <td class="col-quantity">@cartItem.Quantity</td>
-                </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td class="col-product">@cartItem.Product.GetTitle()</td>
+                        <td class="col-quantity">@cartItem.Quantity</td>
+                    </tr>
             }
         </tbody>
         }
     </table>
+    }
+    
     <div class="buttons-container">
+        @if(@User.IsInRole("JuniorAdmin") || User.IsInRole("SeniorAdmin"))
+        {
+            <a class="change-password-button" asp-controller="Admin" asp-action="CRUDproducts">Редактировать товары</a>
+            <a class="change-password-button" asp-controller="Order" asp-action="List">Редактировать заказы</a>
+        }
+        @if(User.IsInRole("SeniorAdmin"))
+        {
+            <a class="change-password-button" asp-controller="Admin" asp-action="CRUDusers">Редактировать пользователей</a>
+        }
         <a class="change-password-button" asp-action="ChangePassword">Изменить пароль</a>
         <a class="log-out-button" asp-controller="Account" asp-action="LogOut" asp-route-returnUrl="@Model.ReturnUrl">Выйти</a>
     </div>

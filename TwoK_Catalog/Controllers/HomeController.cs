@@ -4,8 +4,6 @@ namespace TwoK_Catalog.Controllers
 {
     public class HomeController : Controller
     {
-
-
-        public IActionResult Index() => Redirect("/");
+        public IActionResult Index() => View();
     }
 }

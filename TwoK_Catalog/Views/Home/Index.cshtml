@@ -1,0 +1,38 @@
+﻿@inject CategoriesAndCompanysInfoViewModel categoriesAndCompanysInfoViewModel
+
+
+<div class="main__category">
+    <div class="catalog">
+        <div class="catalog__item">
+            <h3 class="catalog__title">
+                <a href="#" class="catalog__link">
+                    <img src="~/img/catalog-comp-icon.png" class="icon--catalog"/>Компьютерная техника
+                </a>
+            </h3>
+            <nav class="catalog__sub">
+                <a href="#" class="catalog__sub-link non-active">Видеокарты</a>
+                <a href="#" class="catalog__sub-link non-active">Жесткие диски</a>
+                <a href="#" class="catalog__sub-link non-active">Твердотельные накопители (SSD)</a>
+                <a href="#" class="catalog__sub-link non-active">Мониторы</a>
+                <a href="#" class="catalog__sub-link non-active">Ноутбуки</a>
+                <a href="#" class="catalog__more">...</a>
+            </nav>
+        </div>
+        <div class="catalog__item">
+            <h3 class="catalog__title">
+                <a href="#" class="catalog__link">
+                    <img src="~/img/catalog-phone-icon.png" class="icon--catalog"></img>Телефония и связь
+                </a>
+            </h3>
+            <nav class="catalog__sub">
+                <a class="catalog__sub-link" asp-controller="Product" asp-action="List">Мобильные телефоны</a>
+                <a href="#" class="catalog__sub-link non-active">Планшеты</a>
+                <a href="#" class="catalog__sub-link non-active">Чехлы для телефонов</a>
+                <a href="#" class="catalog__sub-link non-active">Портативные зарядные устройства</a>
+                <a href="#" class="catalog__more">...</a>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("HtmlForFutureFeatures")

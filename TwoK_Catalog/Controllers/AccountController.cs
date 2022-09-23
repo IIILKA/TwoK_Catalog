@@ -128,23 +128,16 @@ namespace TwoK_Catalog.Controllers
             return Redirect(returnUrl);
         }
 
-        public async Task<ViewResult> Profile(string returnUrl)
+        public async Task<IActionResult> Profile(string returnUrl)
         {
-            if (User.IsInRole("SeniorAdmin"))
+            if (!User.Identity.IsAuthenticated)
             {
-                return View("SeniorAdminProfile", returnUrl);
+                return Redirect("/");
             }
-            else if (User.IsInRole("JuniorAdmin"))
-            {
-                return View("JuniorAdminProfile", returnUrl);
-            }
-            else
-            {
-                var userOrders = from order in orderRepository.Orders
-                                 where order.UserId == userManager.GetUserId(User)
-                                 select order;
-                return View(new AccountProfileViewModel { Orders = userOrders.ToList(), ReturnUrl = returnUrl });
-            }
+            var userOrders = from order in orderRepository.Orders
+                             where order.UserId == userManager.GetUserId(User)
+                             select order;
+            return View(new AccountProfileViewModel { Orders = userOrders.ToList(), ReturnUrl = returnUrl });
         }
     }
 }

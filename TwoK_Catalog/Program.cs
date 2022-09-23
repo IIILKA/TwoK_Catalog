@@ -65,7 +65,7 @@ app.UseMvc(routes =>
         defaults: new { controller = "Product", action = "List" });
     routes.MapRoute(
         name: "default",
-        template: "{controller=Product}/{action=List}/{id?}");
+        template: "{controller=Home}/{action=Index}/{id?}");
 });
 
 app.Run(async context =>

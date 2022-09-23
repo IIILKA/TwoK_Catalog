@@ -774,6 +774,9 @@ body.lock {
 .catalog__item .catalog__sub .catalog__more {
   font-weight: 700;
 }
+.catalog__item .catalog__sub .non-active {
+  color: rgba(75, 97, 109, 0.6039215686);
+}
 
 .main__column-right {
   width: 240px;
