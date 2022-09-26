@@ -51,8 +51,8 @@
 ## Описание реализованной функциональности
 
 + При нажатии на кнопки авторизации появляются соответствующий попап
-  +![image](https://user-images.githubusercontent.com/83662114/192203858-9b912d7e-b56f-4f6e-b2e4-e4a4e858ed21.png)
-  +![image](https://user-images.githubusercontent.com/83662114/192203911-8597876f-c17d-48b0-8a83-86eff490b543.png)
+  + ![image](https://user-images.githubusercontent.com/83662114/192203858-9b912d7e-b56f-4f6e-b2e4-e4a4e858ed21.png)
+  + ![image](https://user-images.githubusercontent.com/83662114/192203911-8597876f-c17d-48b0-8a83-86eff490b543.png)
   
 если ввести в любой из этих попапов некорректную информацию то появятся соответствующие сообщения об ошибках а поля для **пароля** сбросятся
 
