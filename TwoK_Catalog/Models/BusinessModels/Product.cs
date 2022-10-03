@@ -16,15 +16,16 @@ namespace TwoK_Catalog.Models.BusinessModels
         public Company Company { get; set; }
         [Required(AllowEmptyStrings = true)]
         public string Equipment { get; set; }
-        [Required(AllowEmptyStrings = true)]
+        [Required(ErrorMessage = "Отсутсвует описание продукта")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Отсутсвует цена продукта")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Недопустимое значение")]
         public decimal Price { get; set; }
+        [Required(ErrorMessage = "Отсутсвует конфигурация продукта")]
         public SubCategory SubCategory { get; set; }
         [Required(AllowEmptyStrings = true)]
         public string ImagePath { get; set; }
-        [Required(AllowEmptyStrings = true)]
+        [Required(ErrorMessage = "Отсутсвует файл с изображением")]
         [NotMapped]
         public IFormFile FormFile { get; set; }
         [Required(ErrorMessage = "Отсутсвует количество продукта")]

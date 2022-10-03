@@ -29,6 +29,7 @@
     <div class="form-item">
         <label>
             Конфигурация:
+            <div class="invalid-form-value"><span asp-validation-for="Equipment"></span></div>
             <input asp-for="Equipment" type="text" placeholder="Конфигурация:">
         </label>
     </div>
@@ -49,15 +50,17 @@
     <div class="form-item rich-text">
         <label>
             Описание:
+            <div class="invalid-form-value"><span asp-validation-for="Description"></span></div>
             <textarea asp-for="Description" class="rich-text" type="text" wrap="soft" placeholder="Описание:"></textarea>
         </label>
     </div>
     <div class="field__wrapper">
 
-        <input asp-for="FormFile" type="file" id="field__file" class="field field__file" multiple>
+        <div class="invalid-form-value"><span asp-validation-for="FormFile"></span></div>
+        <input asp-for="FormFile" type="file" id="field__file" class="field field__file">
 
         <label class="field__file-wrapper" for="field__file">
-            <div class="field__file-fake">Файл не выбран</div>
+            <div class="field__file-fake">@(Model.ImagePath == null ? "Файл не выбран" : "Выбрано файлов: 1")</div>
             <div class="field__file-button">Выбрать</div>
         </label>
 
