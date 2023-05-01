@@ -1,10 +1,10 @@
-﻿using TwoK_Catalog.Models.BusinessModels;
+﻿using TwoK_Catalog.ViewModels.Order;
 
 namespace TwoK_Catalog.Models.ViewModels
 {
     public class AccountProfileViewModel
     {
-        public List<Order> Orders { get; set; }
+        public List<OrderViewModel> Orders { get; set; }
         public string ReturnUrl { get; set; }
     }
 }

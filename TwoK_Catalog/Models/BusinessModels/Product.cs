@@ -1,10 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Emit;
-using System.Diagnostics.CodeAnalysis;
 
 namespace TwoK_Catalog.Models.BusinessModels
 {

@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using TwoK_Catalog.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using TwoK_Catalog.Models.BusinessModels;
 using TwoK_Catalog.Models.ViewModels;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using TwoK_Catalog.Services;
+using TwoK_Catalog.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=TwoK_CatalogDB;Trusted_Connection=True;MultipleActiveResultSets=True;"));
@@ -26,12 +24,12 @@ builder.Services.AddIdentity<User, IdentityRole>(opts =>
     opts.SignIn.RequireConfirmedPhoneNumber = false;
     opts.SignIn.RequireConfirmedEmail = false;
 }).AddEntityFrameworkStores<ApplicationIdentityDbContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddTransient<IProductRepository, EFProductRepository>();
-builder.Services.AddTransient<IOrderRepository, EFOrderRepository>();
-builder.Services.AddTransient<ICartRepository, EFCartRepository>();
 builder.Services.AddTransient<IUserRepository, EFUsersRepository>();
 builder.Services.AddTransient<ICategoriesAndCompanysInfoRepository, EFCategoriesAndCompanysInfoRepository>();
-builder.Services.AddScoped<Cart>(sp => Cart.GetCart(sp));
 builder.Services.AddScoped<SessionRegisterViewModel>(sp => (SessionRegisterViewModel)SessionRegisterViewModel.GetRegisterViewModel(sp));
 builder.Services.AddScoped<SessionLogInViewModel>(sp => (SessionLogInViewModel)SessionLogInViewModel.GetLogInViewModel(sp));
 builder.Services.AddTransient<CategoriesAndCompanysInfoViewModel>(sp => CategoriesAndCompanysInfoViewModel.GetCategoriesAndCompanysInfoViewModel(sp));

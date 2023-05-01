@@ -1,49 +1,44 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using TwoK_Catalog.Models;
-using TwoK_Catalog.Models.BusinessModels;
+using TwoK_Catalog.Services.Interfaces;
+using TwoK_Catalog.ViewModels.Order;
 
 namespace TwoK_Catalog.Controllers
 {
     [Authorize]
     public class OrderController : Controller
     {
-        private IOrderRepository repository;
-        private Cart cart;
-        public OrderController(IOrderRepository repositoryService, Cart cartService)
+        private readonly IUserService _userService;
+        private readonly ICartService _cartService;
+        private readonly IOrderService _orderService;
+
+        public OrderController(IUserService userService, ICartService cartService, IOrderService orderService)
         {
-            this.repository = repositoryService;
-            cart = cartService;
+            _userService = userService;
+            _cartService = cartService;
+            _orderService = orderService;
         }
 
-        public ViewResult ToOrder() => View(new Order());
+        public ViewResult ToOrder() => View(new CreateOrderViewModel());
 
         [HttpPost]
-        public IActionResult ToOrder(Order order)
+        public IActionResult ToOrder(CreateOrderViewModel createOrderViewModel)
         {
-            if(cart.CartItems.Count() == 0)
+            var userId = _userService.GetUserId(User);
+
+            if (_cartService.GetCartItems(userId).Count == 0)
             {
                 ModelState.AddModelError("", "Прости, но твоя корзина пуста");
-            }
-            else
-            {
-                order.CartItems = cart.CartItems.ToArray();
-                order.UserId = cart.UserId;
-                ModelState["CartItems"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
-                ModelState["CartItems"].Errors.Clear();
-                ModelState["UserId"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
-                ModelState["UserId"].Errors.Clear();
             }
 
             if (ModelState.IsValid)
             {
-                repository.SaveOrder(order);
+                _orderService.CreateOrder(userId, createOrderViewModel);
                 return RedirectToAction(nameof(Completed));
             }
             else
             {
-                return View(order);
+                return View(createOrderViewModel);
             }
         }
 
@@ -52,7 +47,6 @@ namespace TwoK_Catalog.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                cart.Clear();
                 return View();
             }
             else
@@ -62,18 +56,22 @@ namespace TwoK_Catalog.Controllers
         }
 
         [Authorize(Roles = "SeniorAdmin,JuniorAdmin")]
-        public ViewResult List() => View(repository.Orders.Where(o => !o.IsShipped));
+        public IActionResult List()
+        {
+            return View(_orderService.GetOrders().Where(o => !o.IsShipped));
+        }
 
         [Authorize(Roles = "SeniorAdmin,JuniorAdmin")]
         [HttpPost]
         public IActionResult MarkShipped(int orderId)
         {
-            Order order = repository.Orders.FirstOrDefault(o => o.Id == orderId);
+            var order = _orderService.GetOrders().FirstOrDefault(_ => _.Id == orderId);
+
             if(order != null)
             {
-                order.IsShipped = true;
-                repository.SaveOrder(order);
+                _orderService.MarkOrderAsShipped(order.Id);
             }
+
             return RedirectToAction(nameof(List));
         }
     }

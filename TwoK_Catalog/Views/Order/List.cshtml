@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Order>
+﻿@model IEnumerable<TwoK_Catalog.ViewModels.Order.OrderViewModel>
     
 @{
     ViewBag.Title = "Заказы";
@@ -18,7 +18,7 @@
         {
                 <tbody>
                     <tr class="col-title">
-                        <td class="col-name">@order.Name</td>
+                        <td class="col-name">@order.PersonName</td>
                         <td>@order.PostCode</td>
                         <th>Товар</th>
                         <th class="col-quantity">Количество</th>
@@ -29,11 +29,11 @@
                             </form>
                         </td>
                     </tr>
-                @foreach (var cartItem in order.CartItems)
+                @foreach (var cartItem in order.OrderItems)
                 {
                     <tr>
                         <td colspan="2"></td>
-                        <td>@cartItem.Product.GetTitle()</td>
+                        <td>@cartItem.ProductTitle</td>
                         <td class="col-quantity">@cartItem.Quantity</td>
                         <td class="col-space"></td>
                     </tr>

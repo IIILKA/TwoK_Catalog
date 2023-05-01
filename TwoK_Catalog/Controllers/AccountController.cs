@@ -1,14 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TwoK_Catalog.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using TwoK_Catalog.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using TwoK_Catalog.Models.BusinessModels;
-using TwoK_Catalog.Infrastructure;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Linq;
-using System.Data;
-using Microsoft.Extensions.Configuration.UserSecrets;
+using TwoK_Catalog.Services.Interfaces;
 
 namespace TwoK_Catalog.Controllers
 {
@@ -17,16 +11,21 @@ namespace TwoK_Catalog.Controllers
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly HttpContext context;
-        private readonly IOrderRepository orderRepository;
-        private readonly ICartRepository cartRepository;
+        private readonly IOrderService _orderService;
+        private readonly IUserService _userService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IHttpContextAccessor context, IOrderRepository orderRepository, ICartRepository cartRepository)
+        public AccountController(
+            UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IHttpContextAccessor context,
+            IOrderService orderService,
+            IUserService userService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.context = context.HttpContext;
-            this.orderRepository = orderRepository;
-            this.cartRepository = cartRepository;
+            _orderService = orderService;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -134,10 +133,10 @@ namespace TwoK_Catalog.Controllers
             {
                 return Redirect("/");
             }
-            var userOrders = from order in orderRepository.Orders
-                             where order.UserId == userManager.GetUserId(User)
-                             select order;
-            return View(new AccountProfileViewModel { Orders = userOrders.ToList(), ReturnUrl = returnUrl });
+
+            var userOrders = _orderService.GetOrdersByUser(_userService.GetUserId(User));
+
+            return View(new AccountProfileViewModel { Orders = userOrders, ReturnUrl = returnUrl });
         }
     }
 }
