@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TwoK_Catalog.Models;
 
@@ -11,9 +12,10 @@ using TwoK_Catalog.Models;
 namespace TwoK_Catalog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230425191132_AddNewCartItemEntity")]
+    partial class AddNewCartItemEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,36 +49,13 @@ namespace TwoK_Catalog.Migrations
                     b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("TwoK_Catalog.Entities.Order", b =>
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsShipped")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PersonName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -84,10 +63,10 @@ namespace TwoK_Catalog.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("TwoK_Catalog.Entities.OrderItem", b =>
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,7 +74,10 @@ namespace TwoK_Catalog.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -106,11 +88,13 @@ namespace TwoK_Catalog.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CartId");
+
                     b.HasIndex("OrderId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Category", b =>
@@ -158,6 +142,50 @@ namespace TwoK_Catalog.Migrations
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Companys");
+                });
+
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsShipped")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Product", b =>
@@ -242,21 +270,21 @@ namespace TwoK_Catalog.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("TwoK_Catalog.Entities.OrderItem", b =>
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.CartItem", b =>
                 {
-                    b.HasOne("TwoK_Catalog.Entities.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("TwoK_Catalog.Models.BusinessModels.Cart", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("TwoK_Catalog.Models.BusinessModels.Order", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("OrderId");
 
                     b.HasOne("TwoK_Catalog.Models.BusinessModels.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
@@ -298,14 +326,19 @@ namespace TwoK_Catalog.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("TwoK_Catalog.Entities.Order", b =>
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Cart", b =>
                 {
-                    b.Navigation("OrderItems");
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Category", b =>
                 {
                     b.Navigation("SubCategories");
+                });
+
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Order", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.SubCategory", b =>

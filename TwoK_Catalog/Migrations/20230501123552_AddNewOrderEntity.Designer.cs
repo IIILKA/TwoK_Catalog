@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TwoK_Catalog.Models;
 
@@ -11,9 +12,10 @@ using TwoK_Catalog.Models;
 namespace TwoK_Catalog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230501123552_AddNewOrderEntity")]
+    partial class AddNewOrderEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,6 +113,49 @@ namespace TwoK_Catalog.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItem");
+                });
+
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Category", b =>
@@ -261,6 +306,21 @@ namespace TwoK_Catalog.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.CartItem", b =>
+                {
+                    b.HasOne("TwoK_Catalog.Models.BusinessModels.Cart", null)
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("TwoK_Catalog.Models.BusinessModels.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Company", b =>
                 {
                     b.HasOne("TwoK_Catalog.Models.BusinessModels.SubCategory", null)
@@ -301,6 +361,11 @@ namespace TwoK_Catalog.Migrations
             modelBuilder.Entity("TwoK_Catalog.Entities.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Cart", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("TwoK_Catalog.Models.BusinessModels.Category", b =>

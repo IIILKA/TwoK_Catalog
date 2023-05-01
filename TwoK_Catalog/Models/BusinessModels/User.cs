@@ -2,8 +2,5 @@
 
 namespace TwoK_Catalog.Models.BusinessModels
 {
-    public class User : IdentityUser
-    {
-
-    }
+    public class User : IdentityUser { }
 }

@@ -1,31 +1,29 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TwoK_Catalog.Infrastructure;
-using TwoK_Catalog.Models;
-using TwoK_Catalog.Models.BusinessModels;
-using TwoK_Catalog.Models.ViewModels;
+using TwoK_Catalog.Services.Interfaces;
+using TwoK_Catalog.ViewModels.CartItem;
 
 namespace TwoK_Catalog.Controllers
 {
     [Authorize]
     public class CartController : Controller
     {
-        private IProductRepository productRepository;
-        private Cart cart;
-        private readonly HttpContext context;
-        public CartController(IProductRepository productRepository, Cart cart, IHttpContextAccessor context)
+        private readonly IUserService _userService;
+        private readonly ICartService _cartService;
+        private readonly HttpContext _context;
+
+        public CartController(IHttpContextAccessor context, IUserService userService, ICartService cartService)
         {
-            this.productRepository = productRepository;
-            this.cart = cart;
-            this.context = context.HttpContext;
+            _userService = userService;
+            _cartService = cartService;
+            _context = context.HttpContext;
         }
 
         public ViewResult Index(string returnUrl)
         {
-            return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });    
+            var cartItems = _cartService.GetCartItems(_userService.GetUserId(User)); 
+            var totalPrice = cartItems.Sum(_ => _.ProductPrice * _.Quantity); 
+            return View(new CartViewModel { CartItems = cartItems, TotalPrice = totalPrice, ReturnUrl = returnUrl});
         }
 
         [AllowAnonymous]
@@ -33,31 +31,19 @@ namespace TwoK_Catalog.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                Product product = productRepository.Products
-                    .Include(p => p.Company)
-                    .FirstOrDefault(p => p.Id == productId);
-                if (product != null)
-                {
-                    cart.AddItem(product);
-                }
+                _cartService.AddCartItem(_userService.GetUserId(User), productId, quantity);
                 return RedirectToAction("Index", new { returnUrl });
             }
             else
             {
-                context.Session.SetString("AddToCartErrorMessage", "Авторизуйтесь чтобы пользоваться корзиной");
+                _context.Session.SetString("AddToCartErrorMessage", "Авторизуйтесь чтобы пользоваться корзиной");
                 return RedirectToAction("LogIn", "Account", new { returnUrl });
             }
         }
 
-        public RedirectToActionResult RemoveFromCart(int productId, string returnUrl, int quantity = 1)
+        public RedirectToActionResult RemoveFromCart(int cartItemId, string returnUrl, int quantity = 1)
         {
-            Product product = productRepository.Products
-                .Include(p => p.Company)
-                .FirstOrDefault(p => p.Id == productId);
-            if (product != null)
-            {
-                cart.RemoveItem(product);
-            }
+            _cartService.RemoveCartItem(_userService.GetUserId(User), cartItemId);
             return RedirectToAction("Index", new { returnUrl });
         }
     }

@@ -1,4 +1,4 @@
-﻿@model Order
+﻿@model TwoK_Catalog.ViewModels.Order.CreateOrderViewModel
 
 <h1 class="main__title">Заполните форму</h1>
 <div asp-validation-summary="All" class="text-danger"></div>
@@ -6,41 +6,32 @@
     <div class="input-container">
         <label class="input-title">
         Имя
-        <input type="text" asp-for="Name">
-        <label>
+        <input type="text" asp-for="PersonName">
+        </label>
     </div>
     <div class="input-container">
         <label class="input-title">
         Почтовый индекс
         <input type="text" asp-for="PostCode">
-        <label>
+        </label>
     </div>
     <div class="input-container">
         <label class="input-title">
         Адрес
         <input type="text" asp-for="Address">
-        <label>
+        </label>
     </div>
     <div class="input-container">
         <label class="input-title">
         Город
         <input type="text" asp-for="City">
-        <label>
+        </label>
     </div>
     <div class="input-container">
         <label class="input-title">
         Страна
         <input type="text" asp-for="Country">
-        <label>
-    </div>
-    <div class="input-container">
-        <label class="input-title select-container triangle-for-select">
-        Цвет
-        <select class="select" name="color" asp-for="Color">
-            <option value="white">Белый</option>
-            <option value="black">Чёрный</option>
-        </select>
-        <label>
+        </label>
     </div>
     <div class="btn-container">
         <button type="submit" class="btn">Подтвердить заказ</button>
