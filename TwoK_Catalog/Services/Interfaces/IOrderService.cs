@@ -1,4 +1,5 @@
-﻿using TwoK_Catalog.ViewModels.Order;
+﻿using TwoK_Catalog.Dto.Order;
+using TwoK_Catalog.ViewModels.Order;
 
 namespace TwoK_Catalog.Services.Interfaces
 {
@@ -8,7 +9,9 @@ namespace TwoK_Catalog.Services.Interfaces
 
         public List<OrderViewModel> GetOrdersByUser(string userId);
 
-        public void CreateOrder(string userId, CreateOrderViewModel createOrderViewModel);
+        public OrderPdfDto? GetOrderPdf(int orderId);
+
+        public int CreateOrder(string userId, CreateOrderViewModel createOrderViewModel);
 
         public void MarkOrderAsShipped(int orderId);
     }

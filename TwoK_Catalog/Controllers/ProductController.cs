@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TwoK_Catalog.Controllers;
 using TwoK_Catalog.Models;
 using TwoK_Catalog.Models.ViewModels;
-using System.Linq;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace TwoK_Catalog.Controllers
@@ -18,13 +15,37 @@ namespace TwoK_Catalog.Controllers
             this.repository = repository;
         }
 
-        public ViewResult List(int productPage = 1)
+        //TODO: refactor this method(session)
+        public ViewResult List(int? minPrice, int? maxPrice, int productPage = 1)
         {
+            if (HttpContext.Session.GetInt32("minPrice") == null)
+            {
+                HttpContext.Session.SetInt32("minPrice", minPrice ?? 0);
+            }
+            else if (HttpContext.Session.GetInt32("minPrice") != null && minPrice != null)
+            {
+                HttpContext.Session.SetInt32("minPrice", minPrice.Value);
+            }
+
+            if (HttpContext.Session.GetInt32("maxPrice") == null)
+            {
+                HttpContext.Session.SetInt32("maxPrice", maxPrice ?? int.MaxValue);
+            }
+            else if (HttpContext.Session.GetInt32("maxPrice") != null && maxPrice != null)
+            {
+                HttpContext.Session.SetInt32("maxPrice", maxPrice.Value);
+            }
+
+            var products = repository.Products
+                .Include(p => p.Company)
+                .Include(p => p.SubCategory)
+                .Where(p => p.Price >= decimal.Parse(HttpContext.Session.GetInt32("minPrice").ToString()!) &&
+                            p.Price <= decimal.Parse(HttpContext.Session.GetInt32("maxPrice").ToString()!))
+                .ToList();
+
             return View(new ProductsListViewModel
             {
-                Products = repository.Products
-                    .Include(p => p.Company)
-                    .Include(p => p.SubCategory)
+                Products = products
                     .OrderBy(p => p.Id)
                     .Skip((productPage - 1) * PageSize)
                     .Take(PageSize),
@@ -32,7 +53,7 @@ namespace TwoK_Catalog.Controllers
                 {
                     CurrentPage = productPage,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Products.Count()
+                    TotalItems = products.Count()
                 }
             });
         }

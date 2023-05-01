@@ -45,12 +45,12 @@ namespace TwoK_Catalog.Services
                 .Include(_ => _.Product)
                 .FirstOrDefault(_ => _.UserId == userId && _.Product.Id == productId);
 
+            var product = _dbContext.Products
+                .Include(_ => _.Company)
+                .FirstOrDefault(_ => _.Id == productId);
+
             if (cartItem == null)
             {
-                var product = _dbContext.Products
-                    .Include(_ => _.Company)
-                    .FirstOrDefault(_ => _.Id == productId);
-
                 if (product != null)
                 {
                     _dbContext.CartItems.Add(new CartItem
@@ -66,6 +66,11 @@ namespace TwoK_Catalog.Services
                 cartItem.Quantity += quantity;
             }
 
+            if (product != null)
+            {
+                product.Quaintity -= quantity;
+            }
+
             _dbContext.SaveChanges();
         }
 
@@ -77,11 +82,23 @@ namespace TwoK_Catalog.Services
 
             if (cartItem != null && cartItem.Quantity > 1)
             {
-                cartItem.Quantity--;
-            }
-            else if (cartItem != null)
-            {
-                _dbContext.CartItems.Remove(cartItem);
+                if (cartItem.Quantity > 0)
+                {
+                    cartItem.Quantity--;
+                }
+                else
+                {
+                    _dbContext.CartItems.Remove(cartItem);
+                }
+
+                var product = _dbContext.Products
+                    .Include(_ => _.Company)
+                    .FirstOrDefault(_ => _.Id == cartItem.Product.Id);
+
+                if (product != null)
+                {
+                    product.Quaintity++;
+                }
             }
 
             _dbContext.SaveChanges();

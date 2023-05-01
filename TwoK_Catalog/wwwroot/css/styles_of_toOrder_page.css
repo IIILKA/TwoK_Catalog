@@ -32,7 +32,7 @@
   top: 70%;
   right: 16px;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   display: block;
   pointer-events: none;
   width: 0;
@@ -41,14 +41,14 @@
   border-width: 8px 5px 0 5px;
   border-color: #9badbb transparent transparent transparent;
 }
-.order-form .select-container[data-state=mouseOver]::after {
+.order-form .select-container[data-state="mouseOver"]::after {
   border-color: rgba(8, 126, 243, 0.856) transparent transparent transparent;
 }
 .order-form .select-container select {
   margin-top: 0.25rem;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   outline: none;
   position: relative;
   display: block;
@@ -98,4 +98,31 @@
   text-align: center;
   font-size: 3rem;
   color: #f90;
+}
+
+.save-to-pdf-button-container {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save-to-pdf-button-container .save-to-pdf-button {
+  text-align: center;
+  padding: 0.25rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  background-color: #f90;
+  cursor: pointer;
+  border-width: 0px;
+  border: 0.125rem solid transparent;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.save-to-pdf-button-container .save-to-pdf-button:hover {
+  border-color: rgb(179, 109, 5);
 }

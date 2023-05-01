@@ -1,5 +1,9 @@
 ﻿@model ProductsListViewModel
 
+@{
+    var minPrice = Context.Session.GetInt32("minPrice");
+    var maxPrice = Context.Session.GetInt32("maxPrice");
+}
 
 <ul class="breadcrumb">
     <li><a href="#">Телефония и связь</a></li>
@@ -7,7 +11,7 @@
 </ul>
 <h1 class="main__title">Мобильные телефоны</h1>
 <div class="main__container">
-    <form class="main__sorting-bar sorting-bar">
+    <form asp-controller="Product" asp-action="List" class="main__sorting-bar sorting-bar">
         <div class="sorting-bar__box" data-isActive="true">
             <div class="sorting-bar__head">
                 <span class="sorting-bar__title">Поиск по названию</span>
@@ -26,11 +30,11 @@
                 <div class="sorting-bar__row">
                     <label for="#minPrice" class="sorting-bar__label-in-row">
                         <span class="input-span">от</span>
-                        <input type="text" name="minPrice" id="minPrice">
+                        <input type="text" name="minPrice" id="minPrice" value="@minPrice" >
                     </label>
                     <label for="#maxPrice" class="sorting-bar__label-in-row">
                         <span class="input-span">до</span>
-                        <input type="text" name="maxPrice" id="maxPrice">
+                        <input type="text" name="maxPrice" id="maxPrice" value="@maxPrice">
                     </label>
                 </div>
             </div>
@@ -418,20 +422,25 @@
             </div>
         </div>
         <div class="sorting-bar__box" data-isActive="true">
-            <div class="sorting-bar__head">
-                <span class="sorting-bar__title">Емкость аккумулятора, мА*ч</span>
+        <div class="sorting-bar__head">
+            <span class="sorting-bar__title">Емкость аккумулятора, мА*ч</span>
+        </div>
+        <div class="sorting-bar__body">
+            <div class="sorting-bar__row">
+                <label class="sorting-bar__label-in-row">
+                    <span class="input-span">от</span>
+                    <input type="text" name="minBatteryCapacity" id="minBatteryCapacity">
+                </label>
+                <label class="sorting-bar__label-in-row">
+                    <span class="input-span">до</span>
+                    <input type="text" name="maxBatteryCapacity" id="maxBatteryCapacity">
+                </label>
             </div>
+        </div>
+    </div>
+        <div class="sorting-bar__box" data-isActive="true">
             <div class="sorting-bar__body">
-                <div class="sorting-bar__row">
-                    <label class="sorting-bar__label-in-row">
-                        <span class="input-span">от</span>
-                        <input type="text" name="minBatteryCapacity" id="minBatteryCapacity">
-                    </label>
-                    <label class="sorting-bar__label-in-row">
-                        <span class="input-span">до</span>
-                        <input type="text" name="maxBatteryCapacity" id="maxBatteryCapacity">
-                    </label>
-                </div>
+                <button type="submit" class="sorting-bar__filter-button"><span>Применить фильтр</span></button>
             </div>
         </div>
     </form>

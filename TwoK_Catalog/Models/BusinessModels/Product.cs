@@ -24,7 +24,7 @@ namespace TwoK_Catalog.Models.BusinessModels
         [NotMapped]
         public IFormFile FormFile { get; set; }
         [Required(ErrorMessage = "Отсутсвует количество продукта")]
-        [Range(1, int.MaxValue, ErrorMessage = "Недопустимое значение")]
+        [Range(0, int.MaxValue, ErrorMessage = "Недопустимое значение")]
         public int Quaintity { get; set; }
 
         private Dictionary<string, string> descriptionValues = new Dictionary<string, string>();

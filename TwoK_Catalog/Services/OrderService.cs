@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TwoK_Catalog.Dto.Order;
 using TwoK_Catalog.Entities;
 using TwoK_Catalog.Models;
 using TwoK_Catalog.Services.Interfaces;
@@ -13,10 +14,9 @@ namespace TwoK_Catalog.Services
         public OrderService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
-
         }
 
-        public void CreateOrder(string userId, CreateOrderViewModel createOrderViewModel)
+        public int CreateOrder(string userId, CreateOrderViewModel createOrderViewModel)
         {
             var cartItems = _dbContext.CartItems
                 .Include(_ => _.Product)
@@ -49,6 +49,8 @@ namespace TwoK_Catalog.Services
             _dbContext.Orders.Add(order);
 
             _dbContext.SaveChanges();
+
+            return order.Id;
         }
 
         public List<OrderViewModel> GetOrders()
@@ -90,16 +92,47 @@ namespace TwoK_Catalog.Services
                 Id = order.Id,
                 IsShipped = order.IsShipped,
                 OrderItems = order.OrderItems.Select(orderItem => new OrderItemViewModel
-                    {
-                        Id = orderItem.Id,
-                        ProductTitle = orderItem.Product.GetTitle(),
-                        Quantity = orderItem.Quantity
-                    })
-                    .ToList(),
+                {
+                    Id = orderItem.Id,
+                    ProductTitle = orderItem.Product.GetTitle(),
+                    Quantity = orderItem.Quantity
+                })
+                .ToList(),
             })
             .ToList();
 
             return orderViewModels;
+        }
+
+        public OrderPdfDto? GetOrderPdf(int orderId)
+        {
+            var order = _dbContext.Orders
+                .Include(_ => _.OrderItems)
+                .ThenInclude(_ => _.Product)
+                .ThenInclude(_ => _.Company)
+                .FirstOrDefault(_ => _.Id == orderId);
+
+            if (order != null)
+            {
+                return new OrderPdfDto
+                {
+                    Id = order.Id,
+                    PersonName = order.PersonName,
+                    PostCode = order.PostCode,
+                    Address = order.Address,
+                    City = order.City,
+                    Country = order.Country,
+                    OrderItems = order.OrderItems.Select(orderItem => new OrderItemPdfDto
+                    {
+                        ProductTitle = orderItem.Product.GetTitle(),
+                        ProductPrice = orderItem.Product.Price,
+                        Quantity = orderItem.Quantity
+                    })
+                    .ToList(),
+                };
+            }
+
+            return null;
         }
 
         public void MarkOrderAsShipped(int orderId)

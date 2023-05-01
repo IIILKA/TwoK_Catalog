@@ -1,1 +1,6 @@
-﻿<h1 class="comleted-title">Спасибо за покупку!!!</h1>
+﻿@model int
+
+<h1 class="comleted-title">Спасибо за покупку!!!</h1>
+<div class="save-to-pdf-button-container">
+    <a class="save-to-pdf-button" asp-action="SaveToPdf" asp-route-orderId="@Model">Скачать чек</a>
+</div>

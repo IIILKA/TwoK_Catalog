@@ -1,4 +1,5 @@
-﻿@model Product
+﻿@using Microsoft.CodeAnalysis.VisualBasic.Syntax
+@model Product
 
 <div class="products__item">
     <div class="products__picture-and-checkbox">
@@ -34,7 +35,15 @@
                 <form id="@Model.Id" asp-action="AddToCart" asp-controller="Cart" method="post">
                     <input type="hidden" name="productId" asp-for="@Model.Id"/>
                     <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
-                    <button type="submit" class="products__putInBasket"><span>Положить в корзину</span></button>
+                    @if (Model.Quaintity > 0)
+                    {
+                        <button type="submit" class="products__putInBasket"><span>Положить в корзину</span></button>
+                    }
+                    
+                    @if (Model.Quaintity == 0)
+                    {
+                        <button type="submit" class="products__putInBasket disabled" disabled><span>Положить в корзину</span></button>
+                    }
                 </form>
             </div>
         </div>

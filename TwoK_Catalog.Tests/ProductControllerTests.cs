@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using Xunit;
+﻿using Moq;
 using TwoK_Catalog.Models;
 using TwoK_Catalog.Controllers;
-using Microsoft.AspNetCore.Mvc;
 using TwoK_Catalog.Models.ViewModels;
 using TwoK_Catalog.Models.BusinessModels;
 
@@ -35,7 +28,7 @@ namespace TwoK_Catalog.Tests
             var productController = new ProductController(mock.Object) { PageSize = 3 };
 
             //Действие
-            var result = productController.List(3).ViewData.Model as ProductsListViewModel;
+            var result = productController.List(3, 0 , int.MaxValue).ViewData.Model as ProductsListViewModel;
 
             //Утверждение
             var productArr = result?.Products.ToArray();
@@ -65,7 +58,7 @@ namespace TwoK_Catalog.Tests
             var productController = new ProductController(mock.Object) { PageSize = 3 };
 
             //Действие
-            var result = productController.List(3).ViewData.Model as ProductsListViewModel;
+            var result = productController.List(3, 0, int.MaxValue).ViewData.Model as ProductsListViewModel;
 
             //Утверждение
             var pageInfo = result?.PageInfo;
