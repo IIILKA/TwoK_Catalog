@@ -37,11 +37,11 @@
                 <th class="col-product">Товар</th>
                 <th class="col-quantity">Количество</th>
             </tr>
-            @foreach (var cartItem in order.CartItems)
+            @foreach (var cartItem in order.OrderItems)
             {
                     <tr>
                         <td colspan="2"></td>
-                        <td class="col-product">@cartItem.Product.GetTitle()</td>
+                        <td class="col-product">@cartItem.ProductTitle</td>
                         <td class="col-quantity">@cartItem.Quantity</td>
                     </tr>
             }

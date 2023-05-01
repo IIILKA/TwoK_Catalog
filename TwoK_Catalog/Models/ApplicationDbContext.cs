@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using TwoK_Catalog.Models.BusinessModels;
+using TwoK_Catalog.Entities;
 
 namespace TwoK_Catalog.Models
 {
@@ -11,7 +9,6 @@ namespace TwoK_Catalog.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
 
         public DbSet<Company> Companys { get; set; }
