@@ -32,12 +32,10 @@
                      </form>
                 </div>
                 <div class="products__description">
-                    <span><b>Экран: </b>@Model.GetDescriptionValue("Экран")</span>
-                    <span><b>Система: </b>@Model.GetDescriptionValue("Система")</span>
-                    <span><b>Память: </b>@Model.GetDescriptionValue("Память")</span>
-                    <span><b>Камера: </b>@Model.GetDescriptionValue("Камера")</span>
-                    <span><b>Связь: </b>@Model.GetDescriptionValue("Связь")</span>
-                    <span><b>Конструкция: </b>@Model.GetDescriptionValue("Конструкция")</span>
+                    @foreach(var str in Model.GetDescriptionLines())
+                    {
+                        <span>@str</span>
+                    }
                 </div>
                 <div class="products__comment-link">
                 </div>

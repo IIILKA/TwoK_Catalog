@@ -37,10 +37,13 @@ namespace TwoK_Catalog.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            ModelState["FormFile"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
-            ModelState["FormFile"].Errors.Clear();
-            ModelState["ImagePath"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
-            ModelState["ImagePath"].Errors.Clear();
+            if(product.FormFile != null || product.FormFile == null && (productRepository.Products.FirstOrDefault(p => p.Id == product.Id)?.ImagePath ?? "") != "")
+            {
+                ModelState["FormFile"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
+                ModelState["FormFile"].Errors.Clear();
+                ModelState["ImagePath"].ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
+                ModelState["ImagePath"].Errors.Clear();
+            }
             if (ModelState.IsValid)
             {
                 product.Company = categoriesAndCompanysInfoRepository.Companys.FirstOrDefault(c => c.Id == product.Company.Id);

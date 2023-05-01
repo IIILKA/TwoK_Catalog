@@ -26,7 +26,7 @@ namespace TwoK_Catalog.Models
                                     "Связь: SIM-карт: 1, LTE, Bluetooth 5.0, NFC, выход на наушники: lightning\r\n" +
                                     "Конструкция: корпус: металл и стекло, сканер радужки, сканер лица, водозащита, Li-Ion",
                         Price = 2400,
-                        ImagePath = "",
+                        ImagePath = "/img/products/mobiles/apple/i6aedda15b.png",
                         Quaintity = 100
                     },
                     new Product
@@ -42,7 +42,7 @@ namespace TwoK_Catalog.Models
                                     "Связь: SIM-карт: 1, LTE, Bluetooth 5.0, NFC, выход на наушники: lightning\r\n" +
                                     "Конструкция: корпус: металл и стекло, сканер радужки, сканер лица, водозащита, Li-Ion",
                         Price = 420,
-                        ImagePath = "",
+                        ImagePath = "/img/products/mobiles/xiaomi/Xiaomi Redmi 5 Plus.jpg",
                         Quaintity = 100
                     },
                     new Product
@@ -58,7 +58,7 @@ namespace TwoK_Catalog.Models
                                     "Связь: SIM-карт: 1, LTE, Bluetooth 5.0, NFC, выход на наушники: lightning\r\n" +
                                     "Конструкция: корпус: металл и стекло, сканер радужки, сканер лица, водозащита, Li-Ion",
                         Price = 1700,
-                        ImagePath = "",
+                        ImagePath = "/img/products/mobiles/xiaomi/Xiaomi Black Shark 4.jpg",
                         Quaintity = 100
                     }
                 );
