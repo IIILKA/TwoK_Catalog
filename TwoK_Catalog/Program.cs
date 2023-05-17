@@ -27,6 +27,7 @@ builder.Services.AddIdentity<User, IdentityRole>(opts =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddTransient<IProductRepository, EFProductRepository>();
 builder.Services.AddTransient<IUserRepository, EFUsersRepository>();
 builder.Services.AddTransient<ICategoriesAndCompanysInfoRepository, EFCategoriesAndCompanysInfoRepository>();

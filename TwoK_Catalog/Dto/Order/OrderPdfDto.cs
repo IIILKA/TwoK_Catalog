@@ -15,5 +15,7 @@
         public string Country { get; set; }
 
         public List<OrderItemPdfDto> OrderItems { get; set; }
+
+        public DateTimeOffset DateTime { get; set; }
     }
 }

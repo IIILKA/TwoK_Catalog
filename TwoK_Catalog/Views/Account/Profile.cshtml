@@ -55,6 +55,7 @@
         {
             <a class="change-password-button" asp-controller="Admin" asp-action="CRUDproducts">Редактировать товары</a>
             <a class="change-password-button" asp-controller="Order" asp-action="List">Редактировать заказы</a>
+            <a class="change-password-button" asp-controller="Order" asp-action="OrderStatistic">Смотреть статстику по заказам</a>
         }
         @if(User.IsInRole("SeniorAdmin"))
         {

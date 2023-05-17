@@ -15,12 +15,14 @@ namespace TwoK_Catalog.Controllers
         private readonly IUserService _userService;
         private readonly ICartService _cartService;
         private readonly IOrderService _orderService;
+        private readonly ICompanyService _companyService;
 
-        public OrderController(IUserService userService, ICartService cartService, IOrderService orderService)
+        public OrderController(IUserService userService, ICartService cartService, IOrderService orderService, ICompanyService companyService)
         {
             _userService = userService;
             _cartService = cartService;
             _orderService = orderService;
+            _companyService = companyService;
         }
 
         public ViewResult ToOrder() => View(new CreateOrderViewModel());
@@ -98,7 +100,8 @@ namespace TwoK_Catalog.Controllers
                                               $"Customer country: {orderToPdf.Country}\n" +
                                               $"Customer city: {orderToPdf.City}\n" +
                                               $"Customer address: {orderToPdf.Address}\n" +
-                                              $"Customer post code: {orderToPdf.PostCode}\n", font);
+                                              $"Customer post code: {orderToPdf.PostCode}\n" +
+                                              $"Date time: {orderToPdf.DateTime}\n", font);
 
                 pdfDocument.Add(orderData);
                 pdfDocument.Add(p3);
@@ -134,6 +137,24 @@ namespace TwoK_Catalog.Controllers
             }
 
             return RedirectToAction(nameof(List));
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "SeniorAdmin,JuniorAdmin")]
+        public IActionResult OrderStatistic()
+        {
+            var ordersDictionary = new Dictionary<string, List<OrderItemStatisticViewModel>>();
+            var companies = _companyService.GetCompanyNames();
+            foreach (var company in companies)
+            {
+                var orderItems = _orderService.GetOrderItemsByCompany(company)
+                    .Where(_ => _.DateTime >= DateTimeOffset.Now.AddDays(-5).Date && _.DateTime <= DateTimeOffset.Now)
+                    .ToList();
+
+                ordersDictionary.Add(company, orderItems);
+            }
+
+            return View(ordersDictionary);
         }
 
         //TODO: move from controller

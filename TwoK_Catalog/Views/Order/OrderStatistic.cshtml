@@ -1,0 +1,47 @@
+﻿@model Dictionary<string, List<OrderItemStatisticViewModel>>
+
+@{
+    ViewBag.Title = "Статистика товаров за последние 5 дней";
+    Layout = "_AdminLayout";
+    var a = 1;
+}
+
+<div class="admin-main">
+    <table class="products__table">
+        <thead>
+            <th class="col-company"></th>
+            <th class="col-day">@DateTimeOffset.Now.AddDays(-4).Date.ToShortDateString()</th>
+            <th class="col-day">@DateTimeOffset.Now.AddDays(-3).Date.ToShortDateString()</th>
+            <th class="col-day">@DateTimeOffset.Now.AddDays(-2).Date.ToShortDateString()</th>
+            <th class="col-day">@DateTimeOffset.Now.AddDays(-1).Date.ToShortDateString()</th>
+            <th class="col-day">@DateTimeOffset.Now.Date.ToShortDateString()</th>
+        </thead>
+        <tbody>
+            @foreach(var companyOrderItems in Model)
+            {
+                <tr>
+                    <td class="col-company">@companyOrderItems.Key</td>
+                    <td class="col-day">@companyOrderItems.Value.Where(_ => 
+                                            _.DateTime >= DateTimeOffset.Now.AddDays(-4).Date && 
+                                            _.DateTime < DateTimeOffset.Now.AddDays(-3).Date).Sum(_ => _.Quantity)</td>
+                    <td class="col-day">@companyOrderItems.Value.Where(_ =>
+                                            _.DateTime >= DateTimeOffset.Now.AddDays(-3).Date &&
+                                            _.DateTime < DateTimeOffset.Now.AddDays(-2).Date).Sum(_ => _.Quantity)</td>
+                    <td class="col-day">@companyOrderItems.Value.Where(_ =>
+                                            _.DateTime >= DateTimeOffset.Now.AddDays(-2).Date &&
+                                            _.DateTime < DateTimeOffset.Now.AddDays(-1).Date).Sum(_ => _.Quantity)</td>
+                    <td class="col-day">@companyOrderItems.Value.Where(_ =>
+                                            _.DateTime >= DateTimeOffset.Now.AddDays(-1).Date &&
+                                            _.DateTime < DateTimeOffset.Now.Date).Sum(_ => _.Quantity)</td>
+                    <td class="col-day">@companyOrderItems.Value.Where(_ =>
+                                            _.DateTime >= DateTimeOffset.Now.Date &&
+                                            _.DateTime <= DateTimeOffset.Now).Sum(_ => _.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="add-button-container">
+        <a asp-controller="Home" asp-action="Index" class="to-HomeIndex-button">На главную</a>
+    </div>
+</div>
+

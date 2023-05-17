@@ -11,5 +11,7 @@
         public string PostCode { get; set; }
 
         public List<OrderItemViewModel> OrderItems { get; set; }
+
+        public DateTimeOffset DateTime { get; set; }
     }
 }

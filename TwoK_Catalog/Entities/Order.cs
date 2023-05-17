@@ -19,5 +19,7 @@ namespace TwoK_Catalog.Entities
         public string Country { get; set; }
 
         public string UserId { get; set; }
+
+        public DateTimeOffset DateTime { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace TwoK_Catalog.Services.Interfaces
         public int CreateOrder(string userId, CreateOrderViewModel createOrderViewModel);
 
         public void MarkOrderAsShipped(int orderId);
+
+        public List<OrderItemStatisticViewModel> GetOrderItemsByCompany(string companyName);
     }
 }

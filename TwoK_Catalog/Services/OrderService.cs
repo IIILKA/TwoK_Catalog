@@ -32,7 +32,8 @@ namespace TwoK_Catalog.Services
                 Country = createOrderViewModel.Country,
                 PersonName = createOrderViewModel.PersonName,
                 PostCode = createOrderViewModel.PostCode,
-                IsShipped = false
+                IsShipped = false,
+                DateTime = DateTimeOffset.Now
             };
 
             var orderItems = cartItems.Select(cartItem => new OrderItem
@@ -65,11 +66,12 @@ namespace TwoK_Catalog.Services
             {
                 Id = order.Id,
                 IsShipped = order.IsShipped,
+                DateTime = order.DateTime,
                 OrderItems = order.OrderItems.Select(orderItem => new OrderItemViewModel
                 {
                     Id = orderItem.Id,
                     ProductTitle = orderItem.Product.GetTitle(),
-                    Quantity = orderItem.Quantity
+                    Quantity = orderItem.Quantity,
                 })
                 .ToList(),
             })
@@ -122,6 +124,7 @@ namespace TwoK_Catalog.Services
                     Address = order.Address,
                     City = order.City,
                     Country = order.Country,
+                    DateTime = order.DateTime,
                     OrderItems = order.OrderItems.Select(orderItem => new OrderItemPdfDto
                     {
                         ProductTitle = orderItem.Product.GetTitle(),
@@ -145,6 +148,24 @@ namespace TwoK_Catalog.Services
             }
 
             _dbContext.SaveChanges();
+        }
+
+        public List<OrderItemStatisticViewModel> GetOrderItemsByCompany(string companyName)
+        {
+            var orderItems = _dbContext.OrderItems
+                .Include(_ => _.Order)
+                .Include(_ => _.Product)
+                .ThenInclude(_ => _.Company)
+                .Where(_ => _.Product.Company.Name == companyName);
+
+            return orderItems.Select(_ => new OrderItemStatisticViewModel
+            {
+                Id = _.Id,
+                Company = _.Product.Company.Name,
+                Quantity = _.Quantity,
+                DateTime = _.Order.DateTime
+            })
+            .ToList();
         }
     }
 }

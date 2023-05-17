@@ -80,9 +80,9 @@ namespace TwoK_Catalog.Services
                 .Include(_ => _.Product)
                 .FirstOrDefault(_ => _.Id == cartItemId);
 
-            if (cartItem != null && cartItem.Quantity > 1)
+            if (cartItem != null)
             {
-                if (cartItem.Quantity > 0)
+                if (cartItem.Quantity > 1)
                 {
                     cartItem.Quantity--;
                 }

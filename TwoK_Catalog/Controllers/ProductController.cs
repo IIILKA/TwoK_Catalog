@@ -8,7 +8,7 @@ namespace TwoK_Catalog.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repository;
-        public int PageSize = 2;
+        public int PageSize = 10;
 
         public ProductController(IProductRepository repository)
         {
